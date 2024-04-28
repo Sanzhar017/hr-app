@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 @section('content')
-  <h4>Home Page Students ❤️</h4>
+  <h4>Home Page Studывents ❤️</h4>
   {{ $students->links() }}
 
   @if(session('success'))
@@ -13,6 +13,13 @@
   @endif
 
   <a href="{{ route('students.create') }}" class="btn btn-primary">Create Students</a>
+
+
+
+
+
+
+
   <div class="card">
     <h5 class="card-header">Table Students </h5>
     <div class="table-responsive text-nowrap">

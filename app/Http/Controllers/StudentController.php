@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StudentRequest;
+use App\Models\Status;
 use App\Models\Student;
 use App\Models\StudentOrder;
 use Illuminate\Http\Request;
@@ -27,7 +28,9 @@ class StudentController extends Controller
 
     public function create()
     {
-        return view('students.create');
+      $statuses = Status::all();
+
+      return view('students.create', ['statuses' => $statuses]);
     }
 
     public function store(StudentRequest $request)

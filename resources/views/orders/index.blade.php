@@ -48,7 +48,7 @@
           @elseif($order->currentStatus->name === 'абитурент')
             <span class="status-gray">{{ $order->currentStatus->name }}</span>
           @else
-            {{ $student->status->name }}
+            {{ $order->student->status->name }}
           @endif
         </td>
         <td>

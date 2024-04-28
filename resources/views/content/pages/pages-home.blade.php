@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 @section('content')
-  <h4>Home Page Students ❤️</h4>
+  <h4>Home Page Staff </h4>
   {{ $students->links() }}
 
   @if(session('success'))
@@ -11,6 +11,31 @@
       {{ session('success') }}
     </div>
   @endif
+
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">{{ __('Welcome') }}</div>
+
+          <div class="card-body">
+            @auth
+              <p>Hello, {{ Auth::user()->name }}!</p>
+              <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+              </form>
+            @else
+              <p>You are not logged in.</p>
+            @endauth
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
   <a href="{{ route('students.create') }}" class="btn btn-primary">Create Students</a>
   <div class="card">

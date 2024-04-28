@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FallbackController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\language\LanguageController;
@@ -34,6 +35,11 @@ Route::resource('/students',\App\Http\Controllers\StudentController::class);
 //orders
 Route::resource('/orders', \App\Http\Controllers\StudentOrderController::class);
 
+Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::resource('departaments', 'DepartamentController');
 
 
 Route::resource('/or', \App\Http\Controllers\OrderTypeController::class);
