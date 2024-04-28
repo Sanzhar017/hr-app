@@ -43,9 +43,9 @@ class Student extends Model
     $student = $this->findOrFail($student);
     $student->delete();
   }
-  public function departments()
+  public function department()
   {
-    return $this->belongsToMany(Department::class);
+    return $this->belongsTo(Department::class, 'department_id');
   }
 
 }

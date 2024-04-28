@@ -54,13 +54,13 @@
         @foreach($students as $student)
           <tr>
             <td>{{ $student->name }}</td>
-            <td>{{ $student->department }}</td>
+            <td>{{ $student->department->name }}</td>
             <td>
-              @if($student->status->name === 'обучается')
+              @if($student->status->name === 'Работает')
                 <span class="status-green">{{ $student->status->name }}</span>
-              @elseif($student->status->name === 'отчислен')
+              @elseif($student->status->name === 'Уволен')
                 <span class="status-red">{{ $student->status->name }}</span>
-              @elseif($student->status->name === 'абитурент')
+              @elseif($student->status->name === 'Отпуск')
                 <span class="status-gray">{{ $student->status->name }}</span>
               @else
                 {{ $student->status->name }}
@@ -71,7 +71,7 @@
                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="{{ route('students.edit', ['student' => $student->id]) }}"><i class="ti ti-pencil me-2"></i>Edit</a>
-                  <form method="POST" action="{{ route('students.destroy', ['student' => $student->id]) }}" onsubmit="return confirm('Are you sure you want to delete this student?')">
+                  <form method="POST" action="{{ route('students.destroy', ['student' => $student->id]) }}" onsubmit="return confirm('Are you sure you want to delete this staff?')">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="dropdown-item"><i class="ti ti-trash me-2"></i>Delete</button>

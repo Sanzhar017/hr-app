@@ -30,7 +30,7 @@ class AuthController extends Controller
 
     Auth::attempt($request->only('email', 'password'));
 
-    return redirect()->route('home')->with('success', 'Registration successful.');
+    return redirect()->route('/')->with('success', 'Registration successful.');
   }
 
   public function logout(Request $request)

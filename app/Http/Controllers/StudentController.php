@@ -22,9 +22,10 @@ class StudentController extends Controller
 
     public function index()
     {
+      $departments = Department::get();
       $students = $this->student->paginateWithQueryString(10);
 
-      return view('content.pages.pages-home', ['students' => $students]);
+      return view('content.pages.pages-home', ['students' => $students, 'department' => $departments]);
     }
 
     public function create()
@@ -40,7 +41,7 @@ class StudentController extends Controller
       $validatedData = $request->validated();
       $this->student->createStudent($validatedData);
 
-      return redirect()->route('students.index')->with('success', 'Student created successfully');
+      return redirect()->route('students.index')->with('success', 'Staff created successfully');
     }
 
 
@@ -62,14 +63,14 @@ class StudentController extends Controller
 
     $student->update($validatedData);
 
-    return redirect()->route('students.index')->with('success', 'Student updated successfully');
+    return redirect()->route('students.index')->with('success', 'Staff updated successfully');
   }
 
     public function destroy($student)
     {
       $this->student->destroyStudent($student);
 
-      return redirect()->route('students.index')->with('success', 'Student deleted successfully');
+      return redirect()->route('students.index')->with('success', 'Staff deleted successfully');
     }
 
 }
