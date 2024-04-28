@@ -19,17 +19,17 @@
         <div class="card">
           <div class="card-header">{{ __('Welcome') }}</div>
 
-          <div class="card-body">
-            @auth
-              <p>Hello, {{ Auth::user()->name }}!</p>
-              <form action="{{ route('logout') }}" method="POST">
-                @csrf
-                <button type="submit" class="btn btn-danger btn-sm">Logout</button>
-              </form>
-            @else
-              <p>You are not logged in.</p>
-            @endauth
-          </div>
+{{--          <div class="card-body">--}}
+{{--            @auth--}}
+{{--              <p>Hello, {{ Auth::user()->name }}!</p>--}}
+{{--              <form action="{{ route('logout') }}" method="POST">--}}
+{{--                @csrf--}}
+{{--                <button type="submit" class="btn btn-danger btn-sm">Logout</button>--}}
+{{--              </form>--}}
+{{--            @else--}}
+{{--              <p>You are not logged in.</p>--}}
+{{--            @endauth--}}
+{{--          </div>--}}
         </div>
       </div>
     </div>
@@ -37,14 +37,15 @@
 
 
 
-  <a href="{{ route('students.create') }}" class="btn btn-primary">Create Students</a>
+  <a href="{{ route('students.create') }}" class="btn btn-primary">Create Staff</a>
   <div class="card">
-    <h5 class="card-header">Table Students </h5>
+    <h5 class="card-header">Table staff </h5>
     <div class="table-responsive text-nowrap">
       <table class="table">
         <thead>
         <tr>
           <th>Name</th>
+          <th>Department</th>
           <th>Status </th>
           <th>Actions</th>
         </tr>
@@ -53,6 +54,7 @@
         @foreach($students as $student)
           <tr>
             <td>{{ $student->name }}</td>
+            <td>{{ $student->department }}</td>
             <td>
               @if($student->status->name === 'обучается')
                 <span class="status-green">{{ $student->status->name }}</span>

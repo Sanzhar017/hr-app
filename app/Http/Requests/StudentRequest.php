@@ -25,6 +25,7 @@ class StudentRequest extends FormRequest
       return [
         'name' => 'required|string|max:255',
         'status_id' => 'required|string|max:255',
+        'department_id' => 'required|string|int|max:255',
       ];
     }
 }

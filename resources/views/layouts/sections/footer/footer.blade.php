@@ -11,7 +11,7 @@ $containerFooter = (isset($configData['contentLayout']) && $configData['contentL
           document.write(new Date().getFullYear())
 
       </script>
-      , made with Sanzhar❤️
+      , made with S
       </div>
 
     </div>

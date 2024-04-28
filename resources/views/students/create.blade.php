@@ -3,7 +3,7 @@
 @section('title', 'Create Student')
 
 @section('content')
-  <h4>Create Student</h4>
+  <h4>Create Staff</h4>
 
   <form method="POST" action="{{ route('students.store') }}">
     @csrf
@@ -23,6 +23,16 @@
       </select>
     </div>
 
-    <button type="submit" class="btn btn-primary">Create Student</button>
+    <div class="mb-3">
+      <label for="department_id" class="form-label">Department:</label>
+      <select class="form-select" id="department_id" name="department_id" required>
+        <option value="">Select Department</option>
+        @foreach($departments as $department)
+          <option value="{{ $department->id }}">{{ $department->name }}</option>
+        @endforeach
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create staff</button>
   </form>
 @endsection

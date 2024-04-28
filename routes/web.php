@@ -39,12 +39,12 @@ Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::resource('departaments', 'DepartamentController');
 
 
 Route::resource('/or', \App\Http\Controllers\OrderTypeController::class);
 
 
+Route::resource('/departments', \App\Http\Controllers\DepartmentController::class);
 
 
 //Fallback
