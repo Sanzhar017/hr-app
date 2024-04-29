@@ -21,7 +21,7 @@
 
 
   <div class="card">
-    <h5 class="card-header">Table Staff </h5>
+    <h5 class="card-header">Table Staffыы </h5>
     <div class="table-responsive text-nowrap">
       <table class="table">
         <thead>

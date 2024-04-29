@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Student extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'status_id', 'department_id'];
+    protected $fillable = ['first_name', 'last_name', 'surname','email', 'phone_number', 'date_of_birth', 'nationality','job_title', 'status_id', 'department_id'];
 
   public function status() : BelongsTo
   {

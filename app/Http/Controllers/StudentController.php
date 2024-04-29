@@ -32,10 +32,20 @@ class StudentController extends Controller
     return view('students.create', ['statuses' => $statuses, 'departments' => $departments]);
   }
 
-  public function store(StudentRequest $request)
+  public function store(Request $request)
   {
-    $validatedData = $request->validated();
-    $this->student->create($validatedData);
+    $validatedData = $request->validate([
+      'student_id' => 'required|exists:students,id',
+      'order_type_id' => 'required|exists:order_types,id',
+      'order_number' => 'required|integer',
+      'order_date' => 'required|date',
+      'title' => 'required|string|max:255',
+      'old_status_id' => 'required|exists:statuses,id',
+      's_status_id' => 'required|exists:statuses,id',
+    ]);
+
+    $student = Student::create($validatedData);
+
     return redirect()->route('students.index')->with('success', 'Staff created successfully');
   }
 
