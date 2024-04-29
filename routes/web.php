@@ -44,8 +44,10 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::resource('/or', \App\Http\Controllers\OrderTypeController::class);
 
+Route::resource('/handbooko', \App\Http\Controllers\OrderTypeController::class)->parameters(['handbooko' => 'orderType']);
 
 Route::resource('/handbookd', \App\Http\Controllers\DepartmentController::class)->parameters(['handbookd' => 'department']);
+Route::resource('/statuses', \App\Http\Controllers\StatusController::class);
 
 
 //Fallback

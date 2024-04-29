@@ -9,8 +9,43 @@
     @csrf
 
     <div class="mb-3">
-      <label for="name" class="form-label">Name:</label>
-      <input type="text" class="form-control" id="name" name="name" required>
+      <label for="first_name" class="form-label">First Name:</label>
+      <input type="text" class="form-control" id="first_name" name="first_name" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="last_name" class="form-label">Last Name:</label>
+      <input type="text" class="form-control" id="last_name" name="last_name" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="surname" class="form-label">Surname:</label>
+      <input type="text" class="form-control" id="surname" name="surname" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email:</label>
+      <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="phone_number" class="form-label">Phone Number:</label>
+      <input type="text" class="form-control" id="phone_number" name="phone_number" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="date_of_birth" class="form-label">Date of Birth:</label>
+      <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="nationality" class="form-label">Nationality:</label>
+      <input type="text" class="form-control" id="nationality" name="nationality" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="job_title" class="form-label">Job Title:</label>
+      <input type="text" class="form-control" id="job_title" name="job_title" required>
     </div>
 
     <div class="mb-3">

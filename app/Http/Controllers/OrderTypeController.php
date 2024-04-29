@@ -3,53 +3,65 @@
 namespace App\Http\Controllers;
 
 use App\Models\OrderType;
+use App\Models\Status;
 use Illuminate\Http\Request;
 
 class OrderTypeController extends Controller
 {
+  public function index()
+  {
+    $orderTypes = OrderType::all();
 
-    public function index()
-    {
-        $order = OrderType::get();
+    return view('orderType.index', ['orderTypes' => $orderTypes]);
+  }
 
-        return view('ordertype.index', ['order' => $order]);
-    }
+  public function create()
+  {
+    $statuses = Status::get();
 
+    return view('orderType.create', ['statuses' => $statuses]);
+  }
 
-    public function create()
-    {
-        //
-    }
+  public function store(Request $request)
+  {
+    $request->validate([
+      'name' => 'required|string|max:255|unique:order_types',
+    ]);
 
+    OrderType::create($request->all());
 
-    public function store(Request $request)
-    {
-        //
-    }
+    return redirect()->route('handbooko.index')
+      ->with('success', 'Order type created successfully.');
+  }
 
+  public function show(OrderType $orderType)
+  {
+    return view('orderType.show', ['orderType' => $orderType]);
+  }
 
-    public function show(OrderType $orderType)
-    {
-        //
-    }
+  public function edit(OrderType $orderType)
+  {
 
+    return view('orderType.edit', ['orderType' => $orderType]);
+  }
 
-    public function edit(OrderType $orderType)
-    {
-        //
-    }
+  public function update(Request $request, OrderType $orderType)
+  {
+    $request->validate([
+      'name' => 'required|string|max:255|unique:order_types,name,'.$orderType->id,
+    ]);
 
+    $orderType->update($request->all());
 
-    public function update(Request $request, OrderType $orderType)
-    {
-        //
-    }
+    return redirect()->route('handbooko.index')
+      ->with('success', 'Order type updated successfully');
+  }
 
+  public function destroy(OrderType $orderType)
+  {
+    $orderType->delete();
 
-    public function destroy(OrderType $orderType)
-    {
-      $orderType->delete();
-
-      return redirect()->route('or.index')->with('success', 'Order deleted successfully');
-    }
+    return redirect()->route('handbooko.index')
+      ->with('success', 'Order type deleted successfully');
+  }
 }

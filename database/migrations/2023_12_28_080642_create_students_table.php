@@ -13,9 +13,16 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('surname');
+            $table->string('email')->unique();
+            $table->string('phone_number');
+            $table->date('date_of_birth');
+            $table->string('nationality');
+            $table->string('job_title');
             $table->foreignId('status_id')->constrained('statuses');
-          $table->foreignId('department_id')->constrained('departments');
+            $table->foreignId('department_id')->constrained('departments');
             $table->timestamps();
         });
     }

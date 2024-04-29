@@ -3,7 +3,7 @@
 @section('title', 'Create Student Order')
 
 @section('content')
-  <h4>Create Student Order</h4>
+  <h4>Create Staff Order</h4>
 
   @if(session('success'))
     <div class="alert alert-success">
@@ -14,7 +14,7 @@
   <form method="POST" action="{{ route('orders.store') }}">
     @csrf
     <div class="mb-3">
-      <label for="student_id" class="form-label">Student:</label>
+      <label for="student_id" class="form-label">Staff:</label>
       <select class="form-select" id="student_id" name="student_id[]" required multiple>
         @foreach($students as $student)
           <option value="{{ $student->id }}">{{ $student->name }}</option>

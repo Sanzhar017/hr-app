@@ -28,6 +28,11 @@
           "url": "handbooko",
           "name": "Приказы",
           "slug": "department-2"
+        },
+        {
+          "url": "statuses",
+          "name": "Статусы",
+          "slug": "department-2"
         }
       ]
     },
