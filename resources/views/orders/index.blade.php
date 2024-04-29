@@ -20,7 +20,8 @@
     <thead>
     <tr>
       <th>ID</th>
-      <th>Staff</th>
+      <th>First Name</th>
+      <th>Last Name</th>
       <th>Order Type</th>
       <th>Order Number</th>
       <th>Order Date</th>
@@ -34,7 +35,8 @@
     @foreach ($orders as $order)
       <tr>
         <td>{{ $order->id }}</td>
-        <td>{{ $order->student->name }}</td>
+        <td>{{ $order->student->first_name }}</td>
+        <td>{{ $order->student->last_name }}</td>
         <td>{{ $order->orderType->name }}</td>
         <td>{{ $order->order_number }}</td>
         <td>{{ $order->order_date }}</td>

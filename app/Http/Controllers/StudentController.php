@@ -59,14 +59,30 @@ class StudentController extends Controller
 
   public function edit(Student $student)
   {
-    return view('students.edit', ['student' => $student]);
+    $statuses = Status::all();
+    $departments = Department::all();
+
+    return view('students.edit', ['student' => $student,'statuses' => $statuses, 'departments' => $departments]);
   }
 
-  public function update(UpdateStudentRequest $request, Student $student)
+  public function update(Request $request, Student $student)
   {
-    $validatedData = $request->validated();
+    $validatedData = $request->validate([
+      'first_name' => 'required|string|max:255',
+      'last_name' => 'required|string|max:255',
+      'surname' => 'required|string|max:255',
+      'email' => 'required|email|max:255',
+      'phone_number' => 'required|string|max:100',
+      'date_of_birth' => 'required|date',
+      'nationality' => 'required|string|max:100',
+      'job_title' => 'required|string|max:255',
+      'status_id' => 'required|integer|exists:statuses,id',
+      'department_id' => 'required|integer|exists:departments,id',
+    ]);
+
     $student->update($validatedData);
-    return redirect()->route('students.index')->with('success', 'Staff updated successfully');
+
+    return redirect()->route('students.index')->with('success', 'Student updated successfully');
   }
 
   public function destroy(Student $student)
