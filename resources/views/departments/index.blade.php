@@ -1,4 +1,9 @@
+@extends('layouts.layoutMaster')
+@extends('layouts.app')
 
+@section('title', 'Departments')
+
+@section('content')
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
@@ -6,7 +11,7 @@
           <div class="card-header">{{ __('Departments') }}</div>
 
           <div class="card-body">
-            <a href="{{ route('departments.create') }}" class="btn btn-primary mb-3">{{ __('Create Department') }}</a>
+            <a href="{{ route('handbookd.create') }}" class="btn btn-primary mb-3">{{ __('Create Department') }}</a>
 
             <table class="table">
               <thead>
@@ -20,8 +25,8 @@
                 <tr>
                   <td>{{ $department->name }}</td>
                   <td>
-                    <a href="{{ route('departments.edit', $department->id) }}" class="btn btn-sm btn-primary">{{ __('Edit') }}</a>
-                    <form action="{{ route('departments.destroy', $department->id) }}" method="POST" style="display: inline;">
+                    <a href="{{ route('handbookd.edit', $department->id) }}" class="btn btn-sm btn-primary">{{ __('Edit') }}</a>
+                    <form action="{{ route('handbookd.destroy', $department->id) }}" method="POST" style="display: inline;">
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="btn btn-sm btn-danger">{{ __('Delete') }}</button>
@@ -36,3 +41,4 @@
       </div>
     </div>
   </div>
+@endsection

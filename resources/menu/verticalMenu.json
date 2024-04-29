@@ -2,22 +2,34 @@
   "menu": [
     {
       "url": "/",
-      "name": "Home",
+      "name": "Главная",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "pages-home"
     },
     {
       "url": "page-2",
       "icon": "menu-icon tf-icons ti ti-file",
-      "name": "Add order",
+      "name": "Приказы",
       "slug": "pages-page-2"
     },
     {
-      "url": "pages/misc-error",
-      "name": "Error",
-      "icon": "menu-icon tf-icons ti ti-alert-triangle",
+      "url": "handbook",
+      "name": "Справочники",
+      "icon": "menu-icon tf-icons ti ti-checkbox",
       "slug": "pages-misc-error",
-      "target": "_blank"
+      "target": "_blank",
+      "submenu": [
+        {
+          "url": "handbookd",
+          "name": "Департаменты",
+          "slug": "department-1"
+        },
+        {
+          "url": "handbooko",
+          "name": "Приказы",
+          "slug": "department-2"
+        }
+      ]
     },
     {
       "url": "auth/login-basic",

@@ -1,4 +1,9 @@
+@extends('layouts.layoutMaster')
+@extends('layouts.app')
 
+@section('title', 'Departments')
+
+@section('content')
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
@@ -6,7 +11,7 @@
           <div class="card-header">{{ __('Create Department') }}</div>
 
           <div class="card-body">
-            <form method="POST" action="{{ route('departments.store') }}">
+            <form method="POST" action="{{ route('handbookd.store') }}">
               @csrf
 
               <div class="form-group">
@@ -19,8 +24,8 @@
                 @enderror
               </div>
 
-              <div class="form-group">
-                <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
+              <div class="form-group mb">
+                <button type="submit" class="btn btn-primary  ">{{ __('Create') }}</button>
               </div>
             </form>
           </div>
@@ -28,3 +33,4 @@
       </div>
     </div>
   </div>
+@endsection

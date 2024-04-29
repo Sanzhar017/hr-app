@@ -1,4 +1,9 @@
+@extends('layouts.layoutMaster')
+@extends('layouts.app')
 
+@section('title', 'Departments')
+
+@section('content')
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
@@ -6,7 +11,7 @@
           <div class="card-header">{{ __('Edit Department') }}</div>
 
           <div class="card-body">
-            <form method="POST" action="{{ route('departments.update', $department->id) }}">
+            <form method="POST" action="{{ route('handbookd.update', $department) }}">
               @csrf
               @method('PUT')
 
@@ -27,3 +32,4 @@
       </div>
     </div>
   </div>
+@endsection

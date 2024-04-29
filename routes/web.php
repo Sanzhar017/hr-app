@@ -44,7 +44,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::resource('/or', \App\Http\Controllers\OrderTypeController::class);
 
 
-Route::resource('/departments', \App\Http\Controllers\DepartmentController::class);
+Route::resource('/handbookd', \App\Http\Controllers\DepartmentController::class);
 
 
 //Fallback

@@ -10,6 +10,7 @@
   <style>
     body {
       background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
     }
     .card {
       border: none;
@@ -19,13 +20,25 @@
       background-color: #007bff;
       color: #fff;
       font-weight: bold;
+      border-bottom: none;
     }
     .btn-primary {
-      background-color: #007bff;
+      background-color: green;
       border: none;
+      transition: background-color 0.3s ease;
     }
     .btn-primary:hover {
       background-color: #0056b3;
+    }
+    input.form-control {
+      border-radius: 25px;
+    }
+    input.form-control:focus {
+      box-shadow: none;
+      border-color: #007bff;
+    }
+    .invalid-feedback {
+      color: #dc3545;
     }
   </style>
 </head>
@@ -91,3 +104,4 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+

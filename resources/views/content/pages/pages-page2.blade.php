@@ -8,5 +8,4 @@ $configData = Helper::appClasses();
 
 @section('content')
 <h4>Add order</h4>
-
 @endsection
