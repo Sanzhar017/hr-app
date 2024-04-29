@@ -1,9 +1,9 @@
 @extends('layouts.layoutMaster')
 
-@section('title', 'Edit Order')
+@section('title', 'Тапсырысты өңдеу')
 
 @section('content')
-  <h4>Edit Order</h4>
+  <h4>Тапсырысты өңдеу</h4>
 
   @if ($errors->any())
     <div class="alert alert-danger">
@@ -20,7 +20,7 @@
     @method('PUT')
 
     <div class="mb-3">
-      <label for="student_id" class="form-label">Student:</label>
+      <label for="student_id" class="form-label">Cотрудник:</label>
       <select class="form-select" id="student_id" name="student_id" required>
         @foreach($students as $student)
           <option value="{{ $student->id }}" {{ $order->student_id == $student->id ? 'selected' : '' }}>
@@ -31,7 +31,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="order_type_id" class="form-label">Order Type:</label>
+      <label for="order_type_id" class="form-label">Тапсырыс түрі:</label>
       <select class="form-select" id="order_type_id" name="order_type_id" required>
         @foreach($orderTypes as $orderType)
           <option value="{{ $orderType->id }}" {{ $order->order_type_id == $orderType->id ? 'selected' : '' }}>
@@ -42,22 +42,22 @@
     </div>
 
     <div class="mb-3">
-      <label for="order_number" class="form-label">Order Number:</label>
+      <label for="order_number" class="form-label">Тапсырыс нөмірі:</label>
       <input type="text" class="form-control" id="order_number" name="order_number" value="{{ $order->order_number }}" required>
     </div>
 
     <div class="mb-3">
-      <label for="order_date" class="form-label">Order Date:</label>
+      <label for="order_date" class="form-label">Тапсырыс күні:</label>
       <input type="date" class="form-control" id="order_date" name="order_date" value="{{ $order->order_date }}" required>
     </div>
 
     <div class="mb-3">
-      <label for="title" class="form-label">Title:</label>
+      <label for="title" class="form-label">Тақырыбы:</label>
       <input type="text" class="form-control" id="title" name="title" value="{{ $order->title }}" required>
     </div>
 
     <div class="mb-3">
-      <label for="old_status_id" class="form-label">Old Status:</label>
+      <label for="old_status_id" class="form-label">Ескі мәртебесі:</label>
       <select class="form-select" id="old_status_id" name="old_status_id" required>
         @foreach($statuses as $status)
           <option value="{{ $status->id }}" {{ $order->old_status_id == $status->id ? 'selected' : '' }}>
@@ -68,7 +68,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="s_status_id" class="form-label">Current Status:</label>
+      <label for="s_status_id" class="form-label">Ағымдағы мәртебесі:</label>
       <select class="form-select" id="s_status_id" name="s_status_id" required>
         @foreach($statuses as $status)
           <option value="{{ $status->id }}" {{ $order->s_status_id == $status->id ? 'selected' : '' }}>
@@ -78,6 +78,6 @@
       </select>
     </div>
 
-    <button type="submit" class="btn btn-primary">Update Order</button>
+    <button type="submit" class="btn btn-primary">Тапсырысты өңдеу</button>
   </form>
 @endsection

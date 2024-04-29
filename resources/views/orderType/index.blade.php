@@ -1,11 +1,11 @@
 @extends('layouts.layoutMaster')
 
-@section('title', 'Order Types')
+@section('title', 'Тапсырыс Түрлері')
 
 @section('content')
-  <h4>Order Types</h4>
+  <h4>Тапсырыс Түрлері</h4>
 
-  <a href="{{ route('handbooko.create') }}" class="btn btn-primary mb-3">Create New Order Type</a>
+  <a href="{{ route('handbooko.create') }}" class="btn btn-primary mb-3">Жаңа Тапсырыс Түрі Құру</a>
 
   @if ($orderTypes->count() > 0)
     <div class="table-responsive">
@@ -13,9 +13,9 @@
         <thead>
         <tr>
           <th>ID</th>
-          <th>Name</th>
-          <th>Status</th>
-          <th>Actions</th>
+          <th>Атауы</th>
+          <th>Статус</th>
+          <th>Әрекеттер</th>
         </tr>
         </thead>
         <tbody>
@@ -25,11 +25,11 @@
             <td>{{ $orderType->name }}</td>
             <td>{{ $orderType->status->name }}</td>
             <td>
-              <a href="{{ route('handbooko.edit', $orderType->id) }}" class="btn btn-primary btn-sm">Edit</a>
+              <a href="{{ route('handbooko.edit', $orderType->id) }}" class="btn btn-primary btn-sm">Өңдеу</a>
               <form action="{{ route('handbooko.destroy', $orderType->id) }}" method="POST" style="display: inline-block;">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this order type?')">Delete</button>
+                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Сіз сол тапсырыс түрін жоюға сенімдісіз бе?')">Жою</button>
               </form>
             </td>
           </tr>
@@ -38,6 +38,6 @@
       </table>
     </div>
   @else
-    <p>No order types found.</p>
+    <p>Тапсырыс түрлері табылмады.</p>
   @endif
 @endsection

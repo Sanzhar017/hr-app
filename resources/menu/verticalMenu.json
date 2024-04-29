@@ -2,50 +2,50 @@
   "menu": [
     {
       "url": "/",
-      "name": "Главная",
+      "name": "Басты бет",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "pages-home"
     },
     {
       "url": "page-2",
       "icon": "menu-icon tf-icons ti ti-file",
-      "name": "Приказы",
+      "name": "Бұйрықтар",
       "slug": "pages-page-2"
     },
     {
       "url": "handbook",
-      "name": "Справочники",
+      "name": "Анықтамалықтар",
       "icon": "menu-icon tf-icons ti ti-checkbox",
       "slug": "pages-misc-error",
       "target": "_blank",
       "submenu": [
         {
           "url": "handbookd",
-          "name": "Департаменты",
+          "name": "Департаменттер",
           "slug": "department-1"
         },
         {
           "url": "handbooko",
-          "name": "Приказы",
+          "name": "Анықтамалықтар",
           "slug": "department-2"
         },
         {
           "url": "statuses",
-          "name": "Статусы",
+          "name": "Күйлер",
           "slug": "department-2"
         }
       ]
     },
     {
       "url": "auth/login-basic",
-      "name": "Login",
+      "name": "Логин",
       "icon": "menu-icon tf-icons ti ti-login",
       "slug": "auth-login-basic",
       "target": "_blank"
     },
     {
       "url": "auth/register-basic",
-      "name": "Register",
+      "name": "Тіркеу",
       "icon": "menu-icon tf-icons ti ti-user",
       "slug": "auth-register-basic",
       "target": "_blank"

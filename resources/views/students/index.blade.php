@@ -1,9 +1,9 @@
 @extends('layouts.layoutMaster')
 @extends('layouts.app')
-@section('title', 'Home')
+@section('title', 'Басқару панелі')
 
 @section('content')
-  <h4>Home Page Staff</h4>
+  <h4>Жұмыс беті</h4>
   {{ $students->links() }}
 
   @if(session('success'))
@@ -12,25 +12,25 @@
     </div>
   @endif
 
-  <a href="{{ route('students.create') }}" class="btn btn-primary">Create Students</a>
+  <a href="{{ route('students.create') }}" class="btn btn-primary">Cотрудник қосу</a>
 
   <div class="card">
-    <h5 class="card-header">Table Staff</h5>
+    <h5 class="card-header">Қызметшілер таблицасы</h5>
     <div class="table-responsive text-nowrap">
       <table class="table">
         <thead>
         <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Surname</th>
-          <th>Email</th>
-          <th>Phone Number</th>
-          <th>Date of Birth</th>
-          <th>Nationality</th>
-          <th>Job Title</th>
-          <th>Status</th>
-          <th>Department</th>
-          <th>Actions</th>
+          <th>Аты</th>
+          <th>Тегі</th>
+          <th>Әкесінің аты</th>
+          <th>Электронды пошта</th>
+          <th>Телефон нөмірі</th>
+          <th>Туған күні</th>
+          <th>Миллиеті</th>
+          <th>Жұмыс тақырыбы</th>
+          <th>Мәртебесі</th>
+          <th>Бөлімі</th>
+          <th>Әрекеттер</th>
         </tr>
         </thead>
         <tbody class="table-border-bottom-0">
@@ -50,11 +50,11 @@
               <div class="dropdown">
                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="{{ route('students.edit', ['student' => $student->id]) }}"><i class="ti ti-pencil me-2"></i>Edit</a>
-                  <form method="POST" action="{{ route('students.destroy', ['student' => $student->id]) }}" onsubmit="return confirm('Are you sure you want to delete this student?')">
+                  <a class="dropdown-item" href="{{ route('students.edit', ['student' => $student->id]) }}"><i class="ti ti-pencil me-2"></i>Өңдеу</a>
+                  <form method="POST" action="{{ route('students.destroy', ['student' => $student->id]) }}" onsubmit="return confirm('Сіз солтүстігіні өшіргіңіз келгеніне сенімдісіз бе?')">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="dropdown-item"><i class="ti ti-trash me-2"></i>Delete</button>
+                    <button type="submit" class="dropdown-item"><i class="ti ti-trash me-2"></i>Жою</button>
                   </form>
                 </div>
               </div>
@@ -65,5 +65,5 @@
       </table>
     </div>
   </div>
-  <p class="mt-3">Found {{ $students->total() }} records</p>
+  <p class="mt-3">{{ $students->total() }} тіркелгі табылды</p>
 @endsection

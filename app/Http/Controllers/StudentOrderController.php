@@ -44,7 +44,7 @@ class StudentOrderController extends Controller
 
     StudentOrder::insert($dataToInsert);
 
-    return redirect()->route('orders.index')->with('success', 'Student for order created successfully');
+    return redirect()->route('orders.index')->with('success', 'Кызмет for order created successfully');
 
   }
 
@@ -73,7 +73,7 @@ class StudentOrderController extends Controller
 
     $order->update($validatedData);
 
-    return redirect()->route('orders.index')->with('success', 'Student updated successfully');
+    return redirect()->route('orders.index')->with('success', 'Сотрудник updated successfully');
 
   }
 

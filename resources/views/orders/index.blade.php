@@ -1,7 +1,7 @@
 @extends('layouts.layoutMaster')
 @extends('layouts.app')
 
-@section('title', 'Staff Orders')
+@section('title', 'Қызметкерлердің тапсырыстары')
 
 @section('content')
   {{ $orders->links() }}
@@ -12,23 +12,23 @@
     </div>
   @endif
 
-  <h4>Staff Orders</h4>
+  <h4>Қызметкерлердің тапсырыстары</h4>
 
-  <a href="{{ route('orders.create') }}" class="btn btn-primary mb-3">Create Order</a>
+  <a href="{{ route('orders.create') }}" class="btn btn-primary mb-3">Тапсырысты жасау</a>
 
   <table class="table">
     <thead>
     <tr>
       <th>ID</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Order Type</th>
-      <th>Order Number</th>
-      <th>Order Date</th>
-      <th>Title</th>
-      <th>Old Status</th>
-      <th>Current status</th>
-      <th>Actions</th>
+      <th>Аты</th>
+      <th>Тегі</th>
+      <th>Тапсырыс түрі</th>
+      <th>Тапсырыс нөмірі</th>
+      <th>Тапсырыс күні</th>
+      <th>Тақырыбы</th>
+      <th>Ескі мәртебесі</th>
+      <th>Ағымдағы мәртебесі</th>
+      <th>Әрекеттер</th>
     </tr>
     </thead>
     <tbody>
@@ -43,24 +43,24 @@
         <td>{{ $order->title }}</td>
         <td>{{ $order->oldStatus->name }}</td>
         <td>
-          @if($order->currentStatus->name === 'обучается')
+          @if($order->currentStatus->name === 'оқуда')
             <span class="status-green">{{ $order->currentStatus->name }}</span>
-          @elseif($order->currentStatus->name === 'отчислен')
+          @elseif($order->currentStatus->name === 'оқу тасталды')
             <span class="status-red">{{ $order->currentStatus->name }}</span>
-          @elseif($order->currentStatus->name === 'абитурент')
+          @elseif($order->currentStatus->name === 'абитуриент')
             <span class="status-gray">{{ $order->currentStatus->name }}</span>
           @else
             {{ $order->student->status->name }}
           @endif
         </td>
         <td>
-          <div class="btn-group" role="group" aria-label="Order Actions">
-            <a href="{{ route('orders.show', ['student' => $order->student, 'order' => $order->id]) }}" class="btn btn-info">View</a>
-            <a href="{{ route('orders.edit', ['student' => $order->student, 'order' => $order->id]) }}" class="btn btn-warning">Edit</a>
-            <form method="POST" action="{{ route('orders.destroy', ['student' => $order->student, 'order' => $order->id]) }}" style="display: inline-block;" onsubmit="return confirm('Are you sure you want to delete this order?')">
+          <div class="btn-group" role="group" aria-label="Тапсырыс әрекеттері">
+            <a href="{{ route('orders.show', ['student' => $order->student, 'order' => $order->id]) }}" class="btn btn-info">Көру</a>
+            <a href="{{ route('orders.edit', ['student' => $order->student, 'order' => $order->id]) }}" class="btn btn-warning">Өңдеу</a>
+            <form method="POST" action="{{ route('orders.destroy', ['student' => $order->student, 'order' => $order->id]) }}" style="display: inline-block;" onsubmit="return confirm('Сіз солтүстігіні өшіргіңіз келгеніне сенімдісіз бе?')">
               @csrf
               @method('DELETE')
-              <button type="submit" class="btn btn-danger">Delete</button>
+              <button type="submit" class="btn btn-danger">Жою</button>
             </form>
           </div>
         </td>
@@ -68,5 +68,5 @@
     @endforeach
     </tbody>
   </table>
-  <p class="mt-3">Найдено {{ $orders->total() }} записей</p>
+  <p class="mt-3">Тапсырыстар {{ $orders->total() }} жазбалар табылды</p>
 @endsection

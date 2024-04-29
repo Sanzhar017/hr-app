@@ -1,11 +1,11 @@
 @extends('layouts.layoutMaster')
 
-@section('title', 'Statuses')
+@section('title', 'Статустар')
 
 @section('content')
-  <h4>Statuses</h4>
+  <h4>Статустар</h4>
 
-  <a href="{{ route('statuses.create') }}" class="btn btn-primary mb-3">Create New Status</a>
+  <a href="{{ route('statuses.create') }}" class="btn btn-primary mb-3">Жаңа статусты құру</a>
 
   @if ($statuses->count() > 0)
     <div class="table-responsive">
@@ -23,11 +23,11 @@
             <td>{{ $status->id }}</td>
             <td>{{ $status->name }}</td>
             <td>
-              <a href="{{ route('statuses.edit', ['status' => $status->id]) }}" class="btn btn-primary btn-sm">Edit</a>
+              <a href="{{ route('statuses.edit', ['status' => $status->id]) }}" class="btn btn-primary btn-sm">Өзгерту</a>
               <form action="{{ route('statuses.destroy', ['status' => $status->id]) }}" method="POST" style="display: inline-block;">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this status?')">Delete</button>
+                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Растамаңыз келгенде бұл статусты өшіргіңіз келеді ме?')">Өшіру</button>
               </form>
             </td>
           </tr>
@@ -36,6 +36,6 @@
       </table>
     </div>
   @else
-    <p>No statuses found.</p>
+    <p>Статустар табылмады.</p>
   @endif
 @endsection
