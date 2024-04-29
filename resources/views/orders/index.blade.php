@@ -43,11 +43,11 @@
         <td>{{ $order->title }}</td>
         <td>{{ $order->oldStatus->name }}</td>
         <td>
-          @if($order->currentStatus->name === 'оқуда')
+          @if($order->currentStatus->name === 'работает')
             <span class="status-green">{{ $order->currentStatus->name }}</span>
-          @elseif($order->currentStatus->name === 'оқу тасталды')
+          @elseif($order->currentStatus->name === 'уволен')
             <span class="status-red">{{ $order->currentStatus->name }}</span>
-          @elseif($order->currentStatus->name === 'абитуриент')
+          @elseif($order->currentStatus->name === 'отпуск')
             <span class="status-gray">{{ $order->currentStatus->name }}</span>
           @else
             {{ $order->student->status->name }}

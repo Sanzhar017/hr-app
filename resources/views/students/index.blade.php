@@ -12,7 +12,26 @@
     </div>
   @endif
 
-  <a href="{{ route('students.create') }}" class="btn btn-primary">Cотрудник қосу</a>
+  <form action="{{ route('students.index') }}" method="GET">
+    <div class="row mb-3">
+      <div class="col">
+        <input type="text" class="form-control" name="name" placeholder="Имя">
+      </div>
+      <div class="col">
+        <select class="form-select" name="department_id" aria-label="Департамент">
+          <option selected>Департамент</option>
+          @foreach($departments as $department)
+            <option value="{{ $department->id }}">{{ $department->name }}</option>
+          @endforeach
+        </select>
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-primary">іздеу</button>
+      </div>
+    </div>
+  </form>
+
+  <a href="{{ route('students.create') }}" class="btn btn-primary">Сотрудник қосу</a>
 
   <div class="card">
     <h5 class="card-header">Қызметшілер таблицасы</h5>

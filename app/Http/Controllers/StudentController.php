@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StudentRequest;
 use App\Models\Department;
+use App\Models\OrderType;
 use App\Models\Status;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -18,11 +19,28 @@ class StudentController extends Controller
     $this->student = $student;
   }
 
-  public function index()
+  public function index(Request $request)
   {
-    $students = $this->student->paginate(10);
+    $departments = Department::get();
+    $query = $this->student->query(); // Инициализируем переменную $query
 
-    return view('students.index', ['students' => $students]);
+    if ($request->filled('name')) {
+      // Фильтрация по имени
+      $query->where(function ($query) use ($request) {
+        $query->where('first_name', 'like', '%' . $request->input('name') . '%')
+          ->orWhere('last_name', 'like', '%' . $request->input('name') . '%');
+      });
+    }
+
+    if ($request->filled('department_id')) {
+      // Фильтрация по департаменту
+      $query->where('department_id', $request->input('department_id'));
+    }
+
+    // Выполняем запрос и пагинируем результат
+    $students = $query->paginate(10); // Используем переменную $query для выполнения запроса
+
+    return view('students.index', ['students' => $students, 'departments' => $departments]);
   }
 
   public function create()
