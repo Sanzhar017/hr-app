@@ -11,7 +11,7 @@
           <div class="card-header">{{ __('Edit Department') }}</div>
 
           <div class="card-body">
-            <form method="POST" action="{{ route('handbookd.update', $department) }}">
+            <form method="POST" action="{{ route('handbookd.update', $department->id) }}">
               @csrf
               @method('PUT')
 

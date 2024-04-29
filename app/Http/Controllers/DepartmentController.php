@@ -71,6 +71,7 @@ class DepartmentController extends Controller
     ]);
 
     return redirect()->route('handbookd.index')->with('success', 'Department updated successfully');
+
   }
 
   /**

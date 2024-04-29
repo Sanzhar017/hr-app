@@ -1,7 +1,7 @@
 @extends('layouts.layoutMaster')
 @extends('layouts.app')
 
-@section('title', 'Student Orders')
+@section('title', 'Staff Orders')
 
 @section('content')
   {{ $orders->links() }}
@@ -12,7 +12,7 @@
     </div>
   @endif
 
-  <h4>Student Orders</h4>
+  <h4>Staff Orders</h4>
 
   <a href="{{ route('orders.create') }}" class="btn btn-primary mb-3">Create Order</a>
 
@@ -20,7 +20,7 @@
     <thead>
     <tr>
       <th>ID</th>
-      <th>Student</th>
+      <th>Staff</th>
       <th>Order Type</th>
       <th>Order Number</th>
       <th>Order Date</th>

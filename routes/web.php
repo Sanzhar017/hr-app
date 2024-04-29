@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\FallbackController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\language\LanguageController;
@@ -44,7 +45,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::resource('/or', \App\Http\Controllers\OrderTypeController::class);
 
 
-Route::resource('/handbookd', \App\Http\Controllers\DepartmentController::class);
+Route::resource('/handbookd', \App\Http\Controllers\DepartmentController::class)->parameters(['handbookd' => 'department']);
 
 
 //Fallback
