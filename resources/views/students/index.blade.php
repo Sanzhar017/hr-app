@@ -14,28 +14,38 @@
 
   <a href="{{ route('students.create') }}" class="btn btn-primary">Create Students</a>
 
-
-
-
-
-
-
   <div class="card">
-    <h5 class="card-header">Table Staffыы </h5>
+    <h5 class="card-header">Table Staff</h5>
     <div class="table-responsive text-nowrap">
       <table class="table">
         <thead>
         <tr>
-          <th>Name</th>
-          <th>Status </th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Surname</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Date of Birth</th>
+          <th>Nationality</th>
+          <th>Job Title</th>
+          <th>Status</th>
+          <th>Department</th>
           <th>Actions</th>
         </tr>
         </thead>
         <tbody class="table-border-bottom-0">
         @foreach($students as $student)
           <tr>
-            <td>{{ $student->name }}</td>
-            <td class="btn btn-sm bg-light-success text-success fw-bold  ms-2 fs-8 py-2 px-3 ">{{ $student->status->name }}</td>
+            <td>{{ $student->first_name }}</td>
+            <td>{{ $student->last_name }}</td>
+            <td>{{ $student->surname }}</td>
+            <td>{{ $student->email }}</td>
+            <td>{{ $student->phone_number }}</td>
+            <td>{{ $student->date_of_birth }}</td>
+            <td>{{ $student->nationality }}</td>
+            <td>{{ $student->job_title }}</td>
+            <td>{{ $student->status->name }}</td>
+            <td>{{ $student->department->name }}</td>
             <td>
               <div class="dropdown">
                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
@@ -55,5 +65,5 @@
       </table>
     </div>
   </div>
-  <p class="mt-3">Найдено {{ $students->total() }} записей</p>
+  <p class="mt-3">Found {{ $students->total() }} records</p>
 @endsection
