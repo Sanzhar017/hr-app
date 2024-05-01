@@ -12,16 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('employees_orders', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('employee_id')->constrained('employees');
-            $table->foreignId('order_type_id')->constrained('order_types');
-            $table->integer('order_number');
-            $table->dateTime('order_date');
-            $table->string('title');
-            $table->string('old_status_id')->constrained('statuses');
-            $table->foreignId('s_status_id')->constrained('statuses');
+          $table->id();
+          $table->foreignId('employee_id')->constrained('employees')->onDelete('cascade');
+          $table->foreignId('order_type_id')->constrained('order_types')->onDelete('cascade');
+          $table->integer('order_number');
+          $table->dateTime('order_date');
+          $table->string('title');
+          $table->foreignId('old_status_id')->constrained('statuses')->onDelete('cascade');
+          $table->foreignId('s_status_id')->constrained('statuses')->onDelete('cascade');
 
-            $table->timestamps();
+          $table->timestamps();
         });
     }
 

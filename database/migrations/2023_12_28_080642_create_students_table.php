@@ -21,10 +21,10 @@ return new class extends Migration
           $table->date('date_of_birth');
           $table->string('nationality');
           $table->string('job_title');
-          $table->foreignId('status_id')->constrained('statuses');
+          $table->foreignId('status_id')->constrained('statuses')->onDelete('cascade');;
           $table->foreignId('department_id')
             ->constrained('departments')
-            ->onDelete('cascade'); // Добавляем опцию CASCADE
+            ->onDelete('cascade');
           $table->timestamps();
         });
     }
