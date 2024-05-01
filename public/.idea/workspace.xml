@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b81febc4-39ef-4179-a284-5e692231272b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/StudentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Models/Student.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Models/Student.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/employeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/employeeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/Models/employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Models/employee.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

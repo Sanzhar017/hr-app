@@ -20,11 +20,11 @@
     @method('PUT')
 
     <div class="mb-3">
-      <label for="student_id" class="form-label">Cотрудник:</label>
-      <select class="form-select" id="student_id" name="student_id" required>
-        @foreach($students as $student)
-          <option value="{{ $student->id }}" {{ $order->student_id == $student->id ? 'selected' : '' }}>
-            {{ $student->name }}
+      <label for="employee_id" class="form-label">Cотрудник:</label>
+      <select class="form-select" id="employee_id" name="employee_id" required>
+        @foreach($employees as $employee)
+          <option value="{{ $employee->id }}" {{ $order->employee_id == $employee->id ? 'selected' : '' }}>
+            {{ $employee->name }}
           </option>
         @endforeach
       </select>

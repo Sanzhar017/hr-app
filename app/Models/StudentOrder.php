@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class StudentOrder extends Model
+class employeeOrder extends Model
 {
   use HasFactory;
   protected $guarded = [];
 
   protected $fillable = [
-    'student_id',
+    'employee_id',
     'order_type_id',
     'order_number',
     'order_date',
@@ -22,12 +22,12 @@ class StudentOrder extends Model
     'old_status_id',
     's_status_id',
   ];
-  protected $table = 'students_orders';
+  protected $table = 'employees_orders';
 
 
-  public function student(): BelongsTo
+  public function employee(): BelongsTo
   {
-    return $this->belongsTo(Student::class);
+    return $this->belongsTo(Employee::class);
   }
 
   public function orderType(): BelongsTo

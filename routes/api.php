@@ -20,9 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('/orders', function () {
-  return \App\Models\StudentOrder::get();
+  return \App\Models\employeeOrder::get();
 });
 
-Route::get('/students', function () {
-  return \App\Models\Student::get();
+Route::get('/employees', function () {
+  return \App\Models\Employee::get();
 });

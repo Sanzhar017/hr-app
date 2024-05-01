@@ -4,7 +4,7 @@
 
 @section('content')
   <h4>Жұмыс беті</h4>
-  {{ $students->links() }}
+  {{ $employees->links() }}
 
   @if(session('success'))
     <div class="alert alert-success">
@@ -12,7 +12,7 @@
     </div>
   @endif
 
-  <form action="{{ route('students.index') }}" method="GET">
+  <form action="{{ route('employees.index') }}" method="GET">
     <div class="row mb-3">
       <div class="col">
         <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Имя">
@@ -37,7 +37,7 @@
     </div>
   </form>
 
-  <a href="{{ route('students.create') }}" class="btn btn-primary">Сотрудник қосу</a>
+  <a href="{{ route('employees.create') }}" class="btn btn-primary">Сотрудник қосу</a>
 
   <div class="card">
     <h5 class="card-header">Қызметшілер таблицасы</h5>
@@ -59,24 +59,24 @@
         </tr>
         </thead>
         <tbody class="table-border-bottom-0">
-        @foreach($students as $student)
+        @foreach($employees as $employee)
           <tr>
-            <td>{{ $student->first_name }}</td>
-            <td>{{ $student->last_name }}</td>
-            <td>{{ $student->surname }}</td>
-            <td>{{ $student->email }}</td>
-            <td>{{ $student->phone_number }}</td>
-            <td>{{ $student->date_of_birth }}</td>
-            <td>{{ $student->nationality }}</td>
-            <td>{{ $student->job_title }}</td>
-            <td>{{ $student->status->name }}</td>
-            <td>{{ $student->department->name }}</td>
+            <td>{{ $employee->first_name }}</td>
+            <td>{{ $employee->last_name }}</td>
+            <td>{{ $employee->surname }}</td>
+            <td>{{ $employee->email }}</td>
+            <td>{{ $employee->phone_number }}</td>
+            <td>{{ $employee->date_of_birth }}</td>
+            <td>{{ $employee->nationality }}</td>
+            <td>{{ $employee->job_title }}</td>
+            <td>{{ $employee->status->name }}</td>
+            <td>{{ $employee->department->name }}</td>
             <td>
               <div class="dropdown">
                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="{{ route('students.edit', ['student' => $student->id]) }}"><i class="ti ti-pencil me-2"></i>Өңдеу</a>
-                  <form method="POST" action="{{ route('students.destroy', ['student' => $student->id]) }}" onsubmit="return confirm('Сіз солтүстігіні өшіргіңіз келгеніне сенімдісіз бе?')">
+                  <a class="dropdown-item" href="{{ route('employees.edit', ['employee' => $employee->id]) }}"><i class="ti ti-pencil me-2"></i>Өңдеу</a>
+                  <form method="POST" action="{{ route('employees.destroy', ['employee' => $employee->id]) }}" onsubmit="return confirm('Сіз солтүстігіні өшіргіңіз келгеніне сенімдісіз бе?')">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="dropdown-item"><i class="ti ti-trash me-2"></i>Жою</button>
@@ -90,5 +90,5 @@
       </table>
     </div>
   </div>
-  <p class="mt-3">{{ $students->total() }} тіркелгі табылды</p>
+  <p class="mt-3">{{ $employees->total() }} тіркелгі табылды</p>
 @endsection

@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StudentRequest;
+use App\Http\Requests\employeeRequest;
 use App\Models\Department;
 use App\Models\OrderType;
 use App\Models\Status;
-use App\Models\Student;
+use App\Models\Employee;
 use Illuminate\Http\Request;
-use App\Http\Requests\UpdateStudentRequest;
+use App\Http\Requests\UpdateemployeeRequest;
 
-class StudentController extends Controller
+class EmployeeController extends Controller
 {
-  protected $student;
+  protected $employee;
 
-  public function __construct(Student $student)
+  public function __construct(Employee $employee)
   {
-    $this->student = $student;
+    $this->employee = $employee;
   }
 
     public function index(Request $request)
     {
-      $query = Student::query();
+      $query = Employee::query();
 
       if ($request->filled('department')) {
         // Находим департамент по его названию
@@ -60,9 +60,9 @@ class StudentController extends Controller
         $query->whereIn('department_id', $departments);
       }
 
-      $students = $query->paginate(10);
+      $employees = $query->paginate(10);
 
-      return view('students.index', compact('students'));
+      return view('employees.index', compact('employees'));
     }
 
 
@@ -70,7 +70,7 @@ class StudentController extends Controller
   {
     $statuses = Status::all();
     $departments = Department::all();
-    return view('students.create', ['statuses' => $statuses, 'departments' => $departments]);
+    return view('employees.create', ['statuses' => $statuses, 'departments' => $departments]);
   }
 
   public function store(Request $request)
@@ -79,7 +79,7 @@ class StudentController extends Controller
       'first_name' => 'required|string|max:255',
       'last_name' => 'required|string|max:255',
       'surname' => 'required|string|max:255',
-      'email' => 'required|email|max:255|unique:students',
+      'email' => 'required|email|max:255|unique:employees',
       'phone_number' => 'required|string|max:100',
       'date_of_birth' => 'required|date',
       'nationality' => 'required|string|max:100',
@@ -88,25 +88,25 @@ class StudentController extends Controller
       'department_id' => 'required|exists:departments,id',
     ]);
 
-    $student = Student::create($validatedData);
+    $employee = Employee::create($validatedData);
 
-    return redirect()->route('students.index')->with('success', 'Қызметкер сәтті құрылды');
+    return redirect()->route('employees.index')->with('success', 'Қызметкер сәтті құрылды');
   }
 
-  public function show(Student $student)
+  public function show(Employee $employee)
   {
-    return view('students.show', ['student' => $student]);
+    return view('employees.show', ['employee' => $employee]);
   }
 
-  public function edit(Student $student)
+  public function edit(Employee $employee)
   {
     $statuses = Status::all();
     $departments = Department::all();
 
-    return view('students.edit', ['student' => $student,'statuses' => $statuses, 'departments' => $departments]);
+    return view('employees.edit', ['employee' => $employee,'statuses' => $statuses, 'departments' => $departments]);
   }
 
-  public function update(Request $request, Student $student)
+  public function update(Request $request, Employee $employee)
   {
     $validatedData = $request->validate([
       'first_name' => 'required|string|max:255',
@@ -121,15 +121,15 @@ class StudentController extends Controller
       'department_id' => 'required|integer|exists:departments,id',
     ]);
 
-    $student->update($validatedData);
+    $employee->update($validatedData);
 
-    return redirect()->route('students.index')->with('success', 'Қызметкер сәтті жаңартылды');
+    return redirect()->route('employees.index')->with('success', 'Қызметкер сәтті жаңартылды');
   }
 
-  public function destroy(Student $student)
+  public function destroy(Employee $employee)
   {
-    $student->delete();
-    return redirect()->route('students.index')->with('success', 'Қызметкер сәтті жойылды');
+    $employee->delete();
+    return redirect()->route('employees.index')->with('success', 'Қызметкер сәтті жойылды');
   }
 
 

@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StudentOrderRequest;
-use App\Http\Requests\StudentOrderUpdateRequest;
+use App\Http\Requests\employeeOrderRequest;
+use App\Http\Requests\employeeOrderUpdateRequest;
 use App\Models\OrderType;
 use App\Models\Status;
-use App\Models\Student;
-use App\Models\StudentOrder;
+use App\Models\Employee;
+use App\Models\employeeOrder;
 use Illuminate\Http\Request;
 
-class StudentOrderController extends Controller
+class employeeOrderController extends Controller
 {
 
     public function index()
     {
-      $orders = StudentOrder::with('student', 'orderType', 'currentStatus')->orderBy('created_at','desc')->paginate(10);
+      $orders = employeeOrder::with('employee', 'orderType', 'currentStatus')->orderBy('created_at','desc')->paginate(10);
 
       return view('orders.index', ['orders' => $orders]);
     }
@@ -23,33 +23,33 @@ class StudentOrderController extends Controller
 
     public function create()
     {
-        $students = Student::get();
+        $employees = Employee::get();
         $orderTypes = OrderType::get();
         $statuses = Status::get();
 
-        return view('orders.create',  ['students' => $students, 'orderTypes' => $orderTypes, 'statuses' => $statuses]);
+        return view('orders.create',  ['employees' => $employees, 'orderTypes' => $orderTypes, 'statuses' => $statuses]);
     }
 
-  public function store(StudentOrderRequest $request)
+  public function store(employeeOrderRequest $request)
   {
     $validatedData = $request->validated();
-    $studentIds = $validatedData['student_id'];
+    $employeeIds = $validatedData['employee_id'];
 
     $dataToInsert = [];
-    foreach ($studentIds as $studentId) {
-      $dataToInsert[] = ['student_id' => $studentId] + $validatedData;
+    foreach ($employeeIds as $employeeId) {
+      $dataToInsert[] = ['employee_id' => $employeeId] + $validatedData;
     }
 
-    Student::whereIn('id', $studentIds)->update(['status_id' => $validatedData['s_status_id']]);
+    Employee::whereIn('id', $employeeIds)->update(['status_id' => $validatedData['s_status_id']]);
 
-    StudentOrder::insert($dataToInsert);
+    employeeOrder::insert($dataToInsert);
 
     return redirect()->route('orders.index')->with('success', 'Кызмет for order created successfully');
 
   }
 
 
-  public function show(StudentOrder $order)
+  public function show(employeeOrder $order)
     {
       return view('orders.show', ['order' => $order]);
 
@@ -57,16 +57,16 @@ class StudentOrderController extends Controller
 
   public function edit($id)
   {
-    $order = StudentOrder::findOrFail($id);
-    $students = Student::get();
+    $order = employeeOrder::findOrFail($id);
+    $employees = Employee::get();
     $orderTypes = OrderType::get();
     $statuses = Status::get();
 
-    return view('orders.edit', ['order' => $order, 'students' => $students, 'orderTypes' => $orderTypes, 'statuses' => $statuses]);
+    return view('orders.edit', ['order' => $order, 'employees' => $employees, 'orderTypes' => $orderTypes, 'statuses' => $statuses]);
   }
 
 
-  public function update(StudentOrderUpdateRequest $request, StudentOrder $order)
+  public function update(employeeOrderUpdateRequest $request, employeeOrder $order)
   {
 
     $validatedData = $request->validated();
@@ -77,7 +77,7 @@ class StudentOrderController extends Controller
 
   }
 
-  public function destroy(StudentOrder $order)
+  public function destroy(employeeOrder $order)
   {
     $order->delete();
 

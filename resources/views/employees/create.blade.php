@@ -5,7 +5,7 @@
 @section('content')
   <h4>Қызметкер жасау</h4>
 
-  <form method="POST" action="{{ route('students.store') }}">
+  <form method="POST" action="{{ route('employees.store') }}">
     @csrf
 
     <div class="mb-3">

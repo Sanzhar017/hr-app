@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Student extends Model
+class Employee extends Model
 {
     use HasFactory;
     protected $fillable = ['first_name', 'last_name', 'surname','email', 'phone_number', 'date_of_birth', 'nationality','job_title', 'status_id', 'department_id'];
@@ -17,9 +17,9 @@ class Student extends Model
     return $this->belongsTo(Status::class);
   }
 
-  public function studentOrders() :HasMany
+  public function employeeOrders() :HasMany
   {
-    return $this->hasMany(StudentOrder::class, 'student_id');
+    return $this->hasMany(employeeOrder::class, 'employee_id');
 
   }
 
@@ -28,20 +28,20 @@ class Student extends Model
     return $this->paginate($perPage)->withQueryString();
   }
 
-  public function  createStudent(array $data)
+  public function  createemployee(array $data)
   {
     return $this->create($data);
   }
 
-  public function updateStudent(array $data)
+  public function updateemployee(array $data)
   {
     $this->update($data);
   }
 
-  public function destroyStudent($student)
+  public function destroyemployee($employee)
   {
-    $student = $this->findOrFail($student);
-    $student->delete();
+    $employee = $this->findOrFail($employee);
+    $employee->delete();
   }
   public function department()
   {

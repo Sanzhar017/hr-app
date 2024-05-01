@@ -35,8 +35,8 @@
     @foreach ($orders as $order)
       <tr>
         <td>{{ $order->id }}</td>
-        <td>{{ $order->student->first_name }}</td>
-        <td>{{ $order->student->last_name }}</td>
+        <td>{{ $order->employee->first_name }}</td>
+        <td>{{ $order->employee->last_name }}</td>
         <td>{{ $order->orderType->name }}</td>
         <td>{{ $order->order_number }}</td>
         <td>{{ $order->order_date }}</td>
@@ -50,14 +50,14 @@
           @elseif($order->currentStatus->name === 'отпуск')
             <span class="status-gray">{{ $order->currentStatus->name }}</span>
           @else
-            {{ $order->student->status->name }}
+            {{ $order->employee->status->name }}
           @endif
         </td>
         <td>
           <div class="btn-group" role="group" aria-label="Тапсырыс әрекеттері">
-            <a href="{{ route('orders.show', ['student' => $order->student, 'order' => $order->id]) }}" class="btn btn-info">Көру</a>
-            <a href="{{ route('orders.edit', ['student' => $order->student, 'order' => $order->id]) }}" class="btn btn-warning">Өңдеу</a>
-            <form method="POST" action="{{ route('orders.destroy', ['student' => $order->student, 'order' => $order->id]) }}" style="display: inline-block;" onsubmit="return confirm('Сіз солтүстігіні өшіргіңіз келгеніне сенімдісіз бе?')">
+            <a href="{{ route('orders.show', ['employee' => $order->employee, 'order' => $order->id]) }}" class="btn btn-info">Көру</a>
+            <a href="{{ route('orders.edit', ['employee' => $order->employee, 'order' => $order->id]) }}" class="btn btn-warning">Өңдеу</a>
+            <form method="POST" action="{{ route('orders.destroy', ['employee' => $order->employee, 'order' => $order->id]) }}" style="display: inline-block;" onsubmit="return confirm('Сіз солтүстігіні өшіргіңіз келгеніне сенімдісіз бе?')">
               @csrf
               @method('DELETE')
               <button type="submit" class="btn btn-danger">Жою</button>

@@ -14,10 +14,10 @@
   <form method="POST" action="{{ route('orders.store') }}">
     @csrf
     <div class="mb-3">
-      <label for="student_id" class="form-label">Қызметкерлер:</label>
-      <select class="form-select" id="student_id" name="student_id[]" required multiple>
-        @foreach($students as $student)
-          <option value="{{ $student->id }}">{{ $student->first_name }}</option>
+      <label for="employee_id" class="form-label">Қызметкерлер:</label>
+      <select class="form-select" id="employee_id" name="employee_id[]" required multiple>
+        @foreach($employees as $employee)
+          <option value="{{ $employee->id }}">{{ $employee->first_name }}</option>
         @endforeach
       </select>
     </div>

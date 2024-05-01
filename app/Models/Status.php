@@ -16,19 +16,19 @@ class Status extends Model
     return $this->hasMany(OrderType::class, 'status_id');
   }
 
-  public function students() : HasMany
+  public function employees() : HasMany
   {
-    return $this->hasMany(Student::class, 'status_id');
+    return $this->hasMany(Employee::class, 'status_id');
   }
 
-  public function studentOrdersOldStatus() : HasMany
+  public function employeeOrdersOldStatus() : HasMany
   {
-    return $this->hasMany(StudentOrder::class, 'old_status_id');
+    return $this->hasMany(employeeOrder::class, 'old_status_id');
   }
 
-  public function studentOrdersCurrentStatus() :HasMany
+  public function employeeOrdersCurrentStatus() :HasMany
   {
-    return $this->hasMany(StudentOrder::class, 'status_id');
+    return $this->hasMany(employeeOrder::class, 'status_id');
   }
 
 }
