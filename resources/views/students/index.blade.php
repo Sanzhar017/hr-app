@@ -15,19 +15,19 @@
   <form action="{{ route('students.index') }}" method="GET">
     <div class="row mb-3">
       <div class="col">
-        <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Имя">
+        <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Аты">
       </div>
       <div class="col">
-        <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Фамилия">
+        <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Тегі	">
       </div>
       <div class="col">
-        <input type="text" class="form-control" name="surname" id="surname" placeholder="Отчество">
+        <input type="text" class="form-control" name="surname" id="surname" placeholder="Әкесінің аты">
       </div>
       <div class="col">
         <input type="text" class="form-control" name="email" id="email" placeholder="Электронды пошта">
       </div>
       <div class="col">
-        <input type="text" class="form-control" name="department_name" id="department_name" placeholder="Название департамента">
+        <input type="text" class="form-control" name="department_name" id="department_name" placeholder="Департамент">
       </div>
 
       {{--      <div class="col">--}}

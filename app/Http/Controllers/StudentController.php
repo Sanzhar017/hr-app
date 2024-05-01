@@ -50,11 +50,14 @@ class StudentController extends Controller
       }
 
       if ($request->filled('department_name')) {
-        $department = Department::where('name', $request->department_name)->first();
+        // Получаем значение названия департамента из запроса
+        $departmentName = $request->department_name;
 
-        if ($department) {
-          $query->where('department_id', $department->id);
-        }
+        // Ищем департаменты, чье название содержит указанную строку
+        $departments = Department::where('name', 'LIKE', '%' . $departmentName . '%')->pluck('id');
+
+        // Фильтруем студентов по найденным департаментам
+        $query->whereIn('department_id', $departments);
       }
 
       $students = $query->paginate(10);
