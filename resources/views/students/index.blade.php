@@ -15,18 +15,31 @@
   <form action="{{ route('students.index') }}" method="GET">
     <div class="row mb-3">
       <div class="col">
-        <input type="text" class="form-control" name="name" placeholder="Имя">
+        <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Имя">
       </div>
       <div class="col">
-        <select class="form-select" name="department_id" aria-label="Департамент">
-          <option selected>Департамент</option>
-          @foreach($departments as $department)
-            <option value="{{ $department->id }}">{{ $department->name }}</option>
-          @endforeach
-        </select>
+        <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Фамилия">
       </div>
       <div class="col">
-        <button type="submit" class="btn btn-primary">іздеу</button>
+        <input type="text" class="form-control" name="surname" id="surname" placeholder="Отчество">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" name="email" id="email" placeholder="Электронды пошта">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" name="departament_id" id="departament_id" placeholder="dep">
+      </div>
+
+      {{--      <div class="col">--}}
+{{--        <select class="form-select" name="department_id" id="department_id" aria-label="Департамент">--}}
+{{--          <option selected>Департамент</option>--}}
+{{--          @foreach($departments as $department)--}}
+{{--            <option value="{{ $department->id }}">{{ $department->name }}</option>--}}
+{{--          @endforeach--}}
+{{--        </select>--}}
+{{--      </div>--}}
+      <div class="col">
+        <button type="submit" class="btn btn-primary">Поиск</button>
       </div>
     </div>
   </form>

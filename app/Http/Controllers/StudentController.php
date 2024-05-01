@@ -21,27 +21,37 @@ class StudentController extends Controller
 
   public function index(Request $request)
   {
-    $departments = Department::get();
-    $query = $this->student->query(); // Инициализируем переменную $query
+    $query = Student::query();
 
-    if ($request->filled('name')) {
-      // Фильтрация по имени
-      $query->where(function ($query) use ($request) {
-        $query->where('first_name', 'like', '%' . $request->input('name') . '%')
-          ->orWhere('last_name', 'like', '%' . $request->input('name') . '%');
-      });
+    // Проверяем, был ли отправлен запрос на фильтрацию по имени
+    if ($request->has('first_name')) {
+      $query->where('first_name', 'like', '%' . $request->first_name . '%');
     }
 
-    if ($request->filled('department_id')) {
-      // Фильтрация по департаменту
-      $query->where('department_id', $request->input('department_id'));
+    // Проверяем, был ли отправлен запрос на фильтрацию по фамилии
+    if ($request->has('last_name')) {
+      $query->where('last_name', 'like', '%' . $request->last_name . '%');
     }
 
-    // Выполняем запрос и пагинируем результат
-    $students = $query->paginate(10); // Используем переменную $query для выполнения запроса
+    // Проверяем, был ли отправлен запрос на фильтрацию по отчеству
+    if ($request->has('surname')) {
+      $query->where('surname', 'like', '%' . $request->surname . '%');
+    }
 
-    return view('students.index', ['students' => $students, 'departments' => $departments]);
+    // Проверяем, был ли отправлен запрос на фильтрацию по ID департамента
+    if ($request->has('department_id')) {
+      // Преобразование строки в целое число
+      $departmentId = (int)$request->department_id;
+      $query->where('department_id', $departmentId);
+    }
+
+    // Получаем отфильтрованные данные и передаем их в представление
+    $students = $query->paginate(10);
+    $departments = Department::all(); // предполагается, что у вас есть модель Department
+
+    return view('students.index', compact('students', 'departments'));
   }
+
 
   public function create()
   {
