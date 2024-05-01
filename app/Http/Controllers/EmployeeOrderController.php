@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\employeeOrderRequest;
-use App\Http\Requests\employeeOrderUpdateRequest;
+use App\Http\Requests\EmployeeOrderRequest;
+use App\Http\Requests\EmployeeOrderUpdateRequest;
 use App\Models\OrderType;
 use App\Models\Status;
 use App\Models\Employee;
-use App\Models\employeeOrder;
+use App\Models\EmployeeOrder;
 use Illuminate\Http\Request;
 
-class employeeOrderController extends Controller
+class EmployeeOrderController extends Controller
 {
 
     public function index()
     {
-      $orders = employeeOrder::with('employee', 'orderType', 'currentStatus')->orderBy('created_at','desc')->paginate(10);
+      $orders = EmployeeOrder::with('employee', 'orderType', 'currentStatus')->orderBy('created_at','desc')->paginate(10);
 
       return view('orders.index', ['orders' => $orders]);
     }
@@ -42,14 +42,14 @@ class employeeOrderController extends Controller
 
     Employee::whereIn('id', $employeeIds)->update(['status_id' => $validatedData['s_status_id']]);
 
-    employeeOrder::insert($dataToInsert);
+    EmployeeOrder::insert($dataToInsert);
 
     return redirect()->route('orders.index')->with('success', 'Кызмет for order created successfully');
 
   }
 
 
-  public function show(employeeOrder $order)
+  public function show(EmployeeOrder $order)
     {
       return view('orders.show', ['order' => $order]);
 
@@ -57,7 +57,7 @@ class employeeOrderController extends Controller
 
   public function edit($id)
   {
-    $order = employeeOrder::findOrFail($id);
+    $order = EmployeeOrder::findOrFail($id);
     $employees = Employee::get();
     $orderTypes = OrderType::get();
     $statuses = Status::get();
@@ -66,7 +66,7 @@ class employeeOrderController extends Controller
   }
 
 
-  public function update(employeeOrderUpdateRequest $request, employeeOrder $order)
+  public function update(EmployeeOrderUpdateRequest $request, employeeOrder $order)
   {
 
     $validatedData = $request->validated();

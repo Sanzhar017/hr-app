@@ -34,7 +34,7 @@ Route::resource('/employees',\App\Http\Controllers\EmployeeController::class);
 
 
 //orders
-Route::resource('/orders', \App\Http\Controllers\employeeOrderController::class);
+Route::resource('/orders', \App\Http\Controllers\EmployeeOrderController::class);
 
 Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class employeeOrder extends Model
+class EmployeeOrder extends Model
 {
   use HasFactory;
   protected $guarded = [];
