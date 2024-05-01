@@ -10,7 +10,8 @@
   </div>
 
   <div class="mb-3">
-    <strong>Студент:</strong> {{ $order->employee->name }}
+    <strong>
+      Қызметкер:</strong> {{ $order->employee->first_name }}
   </div>
 
   <div class="mb-3">

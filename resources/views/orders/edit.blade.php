@@ -20,11 +20,12 @@
     @method('PUT')
 
     <div class="mb-3">
-      <label for="employee_id" class="form-label">Cотрудник:</label>
+      <label for="employee_id" class="form-label">
+        Қызметкер:</label>
       <select class="form-select" id="employee_id" name="employee_id" required>
         @foreach($employees as $employee)
           <option value="{{ $employee->id }}" {{ $order->employee_id == $employee->id ? 'selected' : '' }}>
-            {{ $employee->name }}
+            {{ $employee->first_name }}
           </option>
         @endforeach
       </select>

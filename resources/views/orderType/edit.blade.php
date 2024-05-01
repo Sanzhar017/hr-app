@@ -5,7 +5,7 @@
 @section('content')
   <h4>Тапсырыс Түрін Өңдеу</h4>
 
-  <form method="POST" action="{{ route('handbooko.update', ['handbooko' => $orderType->id]) }}">
+  <form method="POST" action="{{ route('handbooko.update', ['orderType' => $orderType->id]) }}">
     @csrf
     @method('PUT')
 

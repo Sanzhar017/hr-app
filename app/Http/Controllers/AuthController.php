@@ -31,7 +31,7 @@ class AuthController extends Controller
 
     Auth::attempt($request->only('email', 'password'));
 
-    return redirect()->route('pages-home')->with('success', 'Регистрация прошла успешно.');
+    return redirect()->route('pages-home')->with('success', 'Тіркеу сәтті аяқталды.');
   }
 
   public function showLoginForm()
@@ -50,7 +50,8 @@ class AuthController extends Controller
       return redirect()->intended(route('pages-home'));
     } else {
       return back()->withErrors([
-        'email' => 'Неверный email или пароль.',
+        'email' => '
+Жарамсыз электрондық пошта немесе құпия сөз.',
       ]);
     }
   }
@@ -60,6 +61,7 @@ class AuthController extends Controller
     Auth::logout();
 
     // Перенаправление на страницу входа с сообщением о выходе
-    return redirect()->route('login')->with('success', 'Вы успешно вышли из системы.');
+    return redirect()->route('login')->with('success', '
+Сіз жүйеден сәтті шықтыңыз.');
   }
 }
