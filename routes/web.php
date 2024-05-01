@@ -1,21 +1,33 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\FallbackController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\language\LanguageController;
-use App\Http\Controllers\pages\HomePage;
-use App\Http\Controllers\pages\Page2;
 use App\Http\Controllers\pages\MiscError;
-use App\Http\Controllers\authentications\LoginBasic;
-use App\Http\Controllers\authentications\RegisterBasic;
+
+
+Route::middleware('guest')->group(function () {
+  Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+  Route::post('/register', [AuthController::class, 'register']);
+
+  Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+  Route::post('/login', [AuthController::class, 'login']);
+  Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+});
 
 Route::middleware('auth')->group(function () {
   Route::resource('/employees',\App\Http\Controllers\EmployeeController::class);
+  Route::resource('/orders', \App\Http\Controllers\EmployeeOrderController::class);
+  Route::resource('/handbooko', \App\Http\Controllers\OrderTypeController::class)->parameters(['handbooko' => 'orderType']);
+
+  Route::resource('/handbookd', \App\Http\Controllers\DepartmentController::class)->parameters(['handbookd' => 'department']);
+  Route::resource('/statuses', \App\Http\Controllers\StatusController::class);
+  Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 });
+
 
 Route::get('/', [\App\Http\Controllers\EmployeeController::class, 'index'])->name('pages-home');
 
@@ -36,23 +48,15 @@ Route::get('/p', [\App\Http\Controllers\EmployeeController::class, 'index']);
 
 
 //orders
-Route::resource('/orders', \App\Http\Controllers\EmployeeOrderController::class);
-
-Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
-
-Route::post('/register', [AuthController::class, 'register']);
-
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+//Route::resource('/orders', \App\Http\Controllers\EmployeeOrderController::class);
 
 
 Route::resource('/or', \App\Http\Controllers\OrderTypeController::class);
 
-Route::resource('/handbooko', \App\Http\Controllers\OrderTypeController::class)->parameters(['handbooko' => 'orderType']);
-
-Route::resource('/handbookd', \App\Http\Controllers\DepartmentController::class)->parameters(['handbookd' => 'department']);
-Route::resource('/statuses', \App\Http\Controllers\StatusController::class);
+//Route::resource('/handbooko', \App\Http\Controllers\OrderTypeController::class)->parameters(['handbooko' => 'orderType']);
+//
+//Route::resource('/handbookd', \App\Http\Controllers\DepartmentController::class)->parameters(['handbookd' => 'department']);
+//Route::resource('/statuses', \App\Http\Controllers\StatusController::class);
 
 
 //Fallback
