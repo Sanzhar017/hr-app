@@ -27,7 +27,7 @@
         <input type="text" class="form-control" name="email" id="email" placeholder="Электронды пошта">
       </div>
       <div class="col">
-        <input type="text" class="form-control" name="departament_id" id="departament_id" placeholder="dep">
+        <input type="text" class="form-control" name="department_name" id="department_name" placeholder="Название департамента">
       </div>
 
       {{--      <div class="col">--}}

@@ -19,38 +19,48 @@ class StudentController extends Controller
     $this->student = $student;
   }
 
-  public function index(Request $request)
-  {
-    $query = Student::query();
+    public function index(Request $request)
+    {
+      $query = Student::query();
 
-    // Проверяем, был ли отправлен запрос на фильтрацию по имени
-    if ($request->has('first_name')) {
-      $query->where('first_name', 'like', '%' . $request->first_name . '%');
+      if ($request->filled('department')) {
+        // Находим департамент по его названию
+        $department = Department::where('name', $request->department_name)->first();
+
+        // Если департамент найден, фильтруем по его идентификатору
+        if ($department) {
+          $query->where('department_id', $department->id);
+        }
+      }
+
+      if ($request->filled('first_name')) {
+        $query->where('first_name', 'like', '%' . $request->first_name . '%');
+      }
+
+      if ($request->filled('last_name')) {
+        $query->where('last_name', 'like', '%' . $request->last_name . '%');
+      }
+
+      if ($request->filled('surname')) {
+        $query->where('surname', 'like', '%' . $request->surname . '%');
+      }
+
+      if ($request->filled('email')) {
+        $query->where('email', 'like', '%' . $request->email . '%');
+      }
+
+      if ($request->filled('department_name')) {
+        $department = Department::where('name', $request->department_name)->first();
+
+        if ($department) {
+          $query->where('department_id', $department->id);
+        }
+      }
+
+      $students = $query->paginate(10);
+
+      return view('students.index', compact('students'));
     }
-
-    // Проверяем, был ли отправлен запрос на фильтрацию по фамилии
-    if ($request->has('last_name')) {
-      $query->where('last_name', 'like', '%' . $request->last_name . '%');
-    }
-
-    // Проверяем, был ли отправлен запрос на фильтрацию по отчеству
-    if ($request->has('surname')) {
-      $query->where('surname', 'like', '%' . $request->surname . '%');
-    }
-
-    // Проверяем, был ли отправлен запрос на фильтрацию по ID департамента
-    if ($request->has('department_id')) {
-      // Преобразование строки в целое число
-      $departmentId = (int)$request->department_id;
-      $query->where('department_id', $departmentId);
-    }
-
-    // Получаем отфильтрованные данные и передаем их в представление
-    $students = $query->paginate(10);
-    $departments = Department::all(); // предполагается, что у вас есть модель Department
-
-    return view('students.index', compact('students', 'departments'));
-  }
 
 
   public function create()
