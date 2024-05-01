@@ -28,7 +28,8 @@ class StatusController extends Controller
     Status::create($request->all());
 
     return redirect()->route('statuses.index')
-      ->with('success', 'Status created successfully.');
+      ->with('success', 'Күй сәтті жасалды
+.');
   }
 
   public function show(Status $status)
@@ -50,7 +51,7 @@ class StatusController extends Controller
     $status->update($request->all());
 
     return redirect()->route('statuses.index')
-      ->with('success', 'Status updated successfully');
+      ->with('success', 'Күй сәтті жаңартылды');
   }
 
   public function destroy(Status $status)
@@ -58,6 +59,7 @@ class StatusController extends Controller
     $status->delete();
 
     return redirect()->route('statuses.index')
-      ->with('success', 'Status deleted successfully');
+      ->with('success', 'Күй сәтті жойылды
+');
   }
 }

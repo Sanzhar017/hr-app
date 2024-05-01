@@ -54,7 +54,8 @@ class OrderTypeController extends Controller
     $orderType->update($request->all());
 
     return redirect()->route('handbooko.index')
-      ->with('success', 'Order type updated successfully');
+      ->with('success', '
+Тапсырыс түрі сәтті жаңартылды');
   }
 
   public function destroy(OrderType $orderType)
@@ -62,6 +63,6 @@ class OrderTypeController extends Controller
     $orderType->delete();
 
     return redirect()->route('handbooko.index')
-      ->with('success', 'Order type deleted successfully');
+      ->with('success', 'Тапсырыс түрі сәтті жойылды');
   }
 }

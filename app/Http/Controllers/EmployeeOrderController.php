@@ -44,7 +44,7 @@ class EmployeeOrderController extends Controller
 
     EmployeeOrder::insert($dataToInsert);
 
-    return redirect()->route('orders.index')->with('success', 'Кызмет for order created successfully');
+    return redirect()->route('orders.index')->with('success', 'Кызмет тапсырыс сәтті жасалған');
 
   }
 
@@ -73,7 +73,8 @@ class EmployeeOrderController extends Controller
 
     $order->update($validatedData);
 
-    return redirect()->route('orders.index')->with('success', 'Сотрудник updated successfully');
+    return redirect()->route('orders.index')->with('success', 'Қызметкер сәтті жаңартылды
+');
 
   }
 
@@ -81,7 +82,7 @@ class EmployeeOrderController extends Controller
   {
     $order->delete();
 
-    return redirect()->route('orders.index')->with('success', 'Order deleted successfully');
+    return redirect()->route('orders.index')->with('success', 'Тапсырыс сәтті жойылды');
   }
 
 }

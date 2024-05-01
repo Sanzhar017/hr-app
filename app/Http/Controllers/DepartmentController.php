@@ -38,7 +38,7 @@ class DepartmentController extends Controller
       'name' => $request->name,
     ]);
 
-    return redirect()->route('handbookd.index')->with('success', 'Department created successfully');
+    return redirect()->route('handbookd.index')->with('success', 'Бөлім сәтті құрылды');
   }
 
   /**
@@ -70,7 +70,7 @@ class DepartmentController extends Controller
       'name' => $request->name,
     ]);
 
-    return redirect()->route('handbookd.index')->with('success', 'Department updated successfully');
+    return redirect()->route('handbookd.index')->with('success', 'Бөлім сәтті жаңартылды');
 
   }
 
@@ -81,6 +81,6 @@ class DepartmentController extends Controller
   {
     $department->delete();
 
-    return redirect()->route('handbookd.index')->with('success', 'Department deleted successfully');
+    return redirect()->route('handbookd.index')->with('success', 'Бөлім сәтті жойылды');
   }
 }

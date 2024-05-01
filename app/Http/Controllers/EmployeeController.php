@@ -24,10 +24,8 @@ class EmployeeController extends Controller
       $query = Employee::query();
 
       if ($request->filled('department')) {
-        // Находим департамент по его названию
         $department = Department::where('name', $request->department_name)->first();
 
-        // Если департамент найден, фильтруем по его идентификатору
         if ($department) {
           $query->where('department_id', $department->id);
         }
@@ -50,13 +48,10 @@ class EmployeeController extends Controller
       }
 
       if ($request->filled('department_name')) {
-        // Получаем значение названия департамента из запроса
         $departmentName = $request->department_name;
 
-        // Ищем департаменты, чье название содержит указанную строку
         $departments = Department::where('name', 'LIKE', '%' . $departmentName . '%')->pluck('id');
 
-        // Фильтруем студентов по найденным департаментам
         $query->whereIn('department_id', $departments);
       }
 
