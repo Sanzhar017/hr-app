@@ -30,14 +30,6 @@
         <input type="text" class="form-control" name="department_name" id="department_name" placeholder="Департамент">
       </div>
 
-      {{--      <div class="col">--}}
-{{--        <select class="form-select" name="department_id" id="department_id" aria-label="Департамент">--}}
-{{--          <option selected>Департамент</option>--}}
-{{--          @foreach($departments as $department)--}}
-{{--            <option value="{{ $department->id }}">{{ $department->name }}</option>--}}
-{{--          @endforeach--}}
-{{--        </select>--}}
-{{--      </div>--}}
       <div class="col">
         <button type="submit" class="btn btn-primary">Поиск</button>
       </div>
@@ -98,4 +90,18 @@
     </div>
   </div>
   <p class="mt-3">{{ $students->total() }} тіркелгі табылды</p>
+@endsection
+
+@section('scripts')
+  <script>
+    $(document).ready(function() {
+      // Скрыть форму при загрузке страницы
+      $('#filtersForm').hide();
+
+      // Переключение видимости формы по нажатию кнопки
+      $('#toggleFilters').click(function() {
+        $('#filtersForm').toggle();
+      });
+    });
+  </script>
 @endsection
