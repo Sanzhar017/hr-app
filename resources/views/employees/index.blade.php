@@ -11,6 +11,10 @@
       {{ session('success') }}
     </div>
   @endif
+  <form method="POST" action="{{ route('logout') }}">
+    @csrf
+    <button type="submit">Logout</button>
+  </form>
 
   <form action="{{ route('employees.index') }}" method="GET">
     <div class="row mb-3">
@@ -35,7 +39,11 @@
       </div>
     </div>
   </form>
-
+  @if (Auth::check())
+    Добро пожаловать, {{ Auth::user()->name }}
+  @else
+    <p>Привет, гость!</p>
+  @endif <br> <br>
   <a href="{{ route('employees.create') }}" class="btn btn-primary">Сотрудник қосу</a>
 
   <div class="card">

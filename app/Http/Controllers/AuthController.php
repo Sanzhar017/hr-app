@@ -16,6 +16,7 @@ class AuthController extends Controller
 
   public function register(Request $request)
   {
+    // Валидация данных
     $request->validate([
       'name' => 'required|string|max:255',
       'email' => 'required|string|email|unique:users,email',
@@ -30,17 +31,35 @@ class AuthController extends Controller
 
     Auth::attempt($request->only('email', 'password'));
 
-    return redirect()->route('pages-home')->with('success', 'Registration successful.');
+    return redirect()->route('pages-home')->with('success', 'Регистрация прошла успешно.');
   }
 
-  public function logout(Request $request)
+  public function showLoginForm()
+  {
+    return view('auth.login');
+  }
+
+  public function login(Request $request)
+  {
+    $credentials = $request->validate([
+      'email' => 'required|string|email',
+      'password' => 'required|string',
+    ]);
+
+    if (Auth::attempt($credentials)) {
+      return redirect()->intended(route('pages-home'));
+    } else {
+      return back()->withErrors([
+        'email' => 'Неверный email или пароль.',
+      ]);
+    }
+  }
+
+  public function logout()
   {
     Auth::logout();
 
-    $request->session()->invalidate();
-
-    $request->session()->regenerateToken();
-
-    return redirect()->route('login');
+    // Перенаправление на страницу входа с сообщением о выходе
+    return redirect()->route('login')->with('success', 'Вы успешно вышли из системы.');
   }
 }

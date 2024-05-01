@@ -11,7 +11,11 @@ use App\Http\Controllers\pages\MiscError;
 use App\Http\Controllers\authentications\LoginBasic;
 use App\Http\Controllers\authentications\RegisterBasic;
 
+Route::middleware('auth')->group(function () {
+  Route::resource('/employees',\App\Http\Controllers\EmployeeController::class);
 
+
+});
 
 Route::get('/', [\App\Http\Controllers\EmployeeController::class, 'index'])->name('pages-home');
 
@@ -25,21 +29,22 @@ Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 Route::get('/pages/misc-error', [MiscError::class, 'index'])->name('pages-misc-error');
 Route::get('/p', [\App\Http\Controllers\EmployeeController::class, 'index']);
 
-// authentication
-Route::get('/auth/login-basic', [LoginBasic::class, 'index'])->name('auth-login-basic');
-Route::get('/auth/register-basic', [RegisterBasic::class, 'index'])->name('auth-register-basic');
 
 //employees
-Route::resource('/employees',\App\Http\Controllers\EmployeeController::class);
+
+//Route::resource('/employees',\App\Http\Controllers\EmployeeController::class);
 
 
 //orders
 Route::resource('/orders', \App\Http\Controllers\EmployeeOrderController::class);
 
 Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 Route::resource('/or', \App\Http\Controllers\OrderTypeController::class);
