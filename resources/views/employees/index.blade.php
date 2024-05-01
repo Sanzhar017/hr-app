@@ -13,7 +13,7 @@
   @endif
   <form method="POST" action="{{ route('logout') }}">
     @csrf
-    <button type="submit">Logout</button>
+    <button type="submit" class="btn btn-sm btn-outline-danger">Шығу</button>
   </form>
 
   <form action="{{ route('employees.index') }}" method="GET">
@@ -35,14 +35,15 @@
       </div>
 
       <div class="col">
-        <button type="submit" class="btn btn-primary">Поиск</button>
+        <button type="submit" class="btn btn-primary">Іздеу</button>
       </div>
     </div>
   </form>
   @if (Auth::check())
-    Добро пожаловать, {{ Auth::user()->name }}
+    Қош келдіңіз, {{ Auth::user()->name }} !
   @else
-    <p>Привет, гость!</p>
+    <p>
+      Сәлем, қонақ!</p>
   @endif <br> <br>
   <a href="{{ route('employees.create') }}" class="btn btn-primary">Сотрудник қосу</a>
 

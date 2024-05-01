@@ -35,27 +35,9 @@
           "slug": "department-2"
         }
       ]
-    },
-    {
-      "url": "login",
-      "name": "Логин",
-      "icon": "menu-icon tf-icons ti ti-login",
-      "slug": "auth-login-basic",
-      "target": "_blank"
-    },
-    {
-      "url": "register",
-      "name": "Тіркеу",
-      "icon": "menu-icon tf-icons ti ti-user",
-      "slug": "auth-register-basic",
-      "target": "_blank"
-    },
-    {
-      "url": "logout",
-      "name": "Выход",
-      "icon": "menu-icon tf-icons ti ti-user",
-      "slug": "auth-register-basic",
-      "target": "_self"
     }
+
+
+
   ]
 }
