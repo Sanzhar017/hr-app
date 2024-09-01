@@ -1,42 +1,41 @@
 @extends('layouts.layoutMaster')
 
-@section('title', 'Студенттің тапсырысын көрсету')
+@section('title', 'Просмотр заказа студента')
 
 @section('content')
-  <h4>Қызметкер туралы ақпарат</h4>
+  <h4>Информация о сотруднике</h4>
 
   <div class="mb-3">
     <strong>ID:</strong> {{ $order->id }}
   </div>
 
   <div class="mb-3">
-    <strong>
-      Қызметкер:</strong> {{ $order->employee->first_name }}
+    <strong>Сотрудник:</strong> {{ $order->employee->first_name }}
   </div>
 
   <div class="mb-3">
-    <strong>Тапсырыс түрі:</strong> {{ $order->orderType->name }}
+    <strong>Тип заказа:</strong> {{ $order->orderType->name }}
   </div>
 
   <div class="mb-3">
-    <strong>Тапсырыс нөмірі:</strong> {{ $order->order_number }}
+    <strong>Номер заказа:</strong> {{ $order->order_number }}
   </div>
 
   <div class="mb-3">
-    <strong>Тапсырыс күні:</strong> {{ $order->order_date }}
+    <strong>Дата заказа:</strong> {{ $order->order_date }}
   </div>
 
   <div class="mb-3">
-    <strong>Тақырыбы:</strong> {{ $order->title }}
+    <strong>Тема:</strong> {{ $order->title }}
   </div>
 
   <div class="mb-3">
-    <strong>Ескі мәртебесі:</strong> {{ $order->oldStatus->name }}
+    <strong>Старый статус:</strong> {{ $order->oldStatus->name }}
   </div>
 
   <div class="mb-3">
-    <strong>Ағымдағы мәртебесі:</strong> {{ $order->currentStatus->name }}
+    <strong>Текущий статус:</strong> {{ $order->currentStatus->name }}
   </div>
 
-  <a href="{{ route('orders.index') }}" class="btn btn-primary">Артқа</a>
+  <a href="{{ route('orders.index') }}" class="btn btn-primary">Назад</a>
 @endsection

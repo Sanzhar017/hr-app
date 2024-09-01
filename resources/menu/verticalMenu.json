@@ -2,36 +2,36 @@
   "menu": [
     {
       "url": "/",
-      "name": "Басты бет",
+      "name": "Главная страница",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "pages-home"
     },
     {
       "url": "orders",
       "icon": "menu-icon tf-icons ti ti-file",
-      "name": "Бұйрықтар",
+      "name": "Приказы",
       "slug": "pages-page-2"
     },
     {
       "url": "handbook",
-      "name": "Анықтамалықтар",
+      "name": "Справочник",
       "icon": "menu-icon tf-icons ti ti-checkbox",
       "slug": "pages-misc-error",
       "target": "_blank",
       "submenu": [
         {
           "url": "handbookd",
-          "name": "Департаменттер",
+          "name": "Департаменты",
           "slug": "department-1"
         },
         {
           "url": "handbooko",
-          "name": "Анықтамалықтар",
+          "name": "Приказы",
           "slug": "department-2"
         },
         {
           "url": "statuses",
-          "name": "Статустар",
+          "name": "Статусы",
           "slug": "department-2"
         }
       ]

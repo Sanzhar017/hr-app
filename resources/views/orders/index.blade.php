@@ -1,7 +1,7 @@
 @extends('layouts.layoutMaster')
 @extends('layouts.app')
 
-@section('title', 'Қызметкерлердің тапсырыстары')
+@section('title', 'Заказы сотрудников')
 
 @section('content')
   {{ $orders->links() }}
@@ -12,23 +12,23 @@
     </div>
   @endif
 
-  <h4>Қызметкерлердің тапсырыстары</h4>
+  <h4>Заказы сотрудников</h4>
 
-  <a href="{{ route('orders.create') }}" class="btn btn-primary mb-3">Тапсырысты жасау</a>
+  <a href="{{ route('orders.create') }}" class="btn btn-primary mb-3">Создать заказ</a>
 
   <table class="table">
     <thead>
     <tr>
       <th>ID</th>
-      <th>Аты</th>
-      <th>Тегі</th>
-      <th>Тапсырыс түрі</th>
-      <th>Тапсырыс нөмірі</th>
-      <th>Тапсырыс күні</th>
-      <th>Тақырыбы</th>
-      <th>Ескі мәртебесі</th>
-      <th>Ағымдағы мәртебесі</th>
-      <th>Әрекеттер</th>
+      <th>Имя</th>
+      <th>Фамилия</th>
+      <th>Тип заказа</th>
+      <th>Номер заказа</th>
+      <th>Дата заказа</th>
+      <th>Тема</th>
+      <th>Старый статус</th>
+      <th>Текущий статус</th>
+      <th>Действия</th>
     </tr>
     </thead>
     <tbody>
@@ -54,13 +54,13 @@
           @endif
         </td>
         <td>
-          <div class="btn-group" role="group" aria-label="Тапсырыс әрекеттері">
-            <a href="{{ route('orders.show', ['employee' => $order->employee, 'order' => $order->id]) }}" class="btn btn-info">Көру</a>
-            <a href="{{ route('orders.edit', ['employee' => $order->employee, 'order' => $order->id]) }}" class="btn btn-warning">Өңдеу</a>
-            <form method="POST" action="{{ route('orders.destroy', ['employee' => $order->employee, 'order' => $order->id]) }}" style="display: inline-block;" onsubmit="return confirm('Сіз солтүстігіні өшіргіңіз келгеніне сенімдісіз бе?')">
+          <div class="btn-group" role="group" aria-label="Действия заказа">
+            <a href="{{ route('orders.show', ['employee' => $order->employee, 'order' => $order->id]) }}" class="btn btn-info">Просмотр</a>
+            <a href="{{ route('orders.edit', ['employee' => $order->employee, 'order' => $order->id]) }}" class="btn btn-warning">Редактировать</a>
+            <form method="POST" action="{{ route('orders.destroy', ['employee' => $order->employee, 'order' => $order->id]) }}" style="display: inline-block;" onsubmit="return confirm('Вы уверены, что хотите удалить этот заказ?')">
               @csrf
               @method('DELETE')
-              <button type="submit" class="btn btn-danger">Жою</button>
+              <button type="submit" class="btn btn-danger">Удалить</button>
             </form>
           </div>
         </td>
@@ -68,5 +68,5 @@
     @endforeach
     </tbody>
   </table>
-  <p class="mt-3">Тапсырыстар {{ $orders->total() }} жазбалар табылды</p>
+  <p class="mt-3">Найдено {{ $orders->total() }} записей заказов</p>
 @endsection
