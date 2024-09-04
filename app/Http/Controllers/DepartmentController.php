@@ -70,7 +70,7 @@ class DepartmentController extends Controller
       'name' => $request->name,
     ]);
 
-    return redirect()->route('handbookd.index')->with('success', 'Бөлім сәтті жаңартылды');
+    return redirect()->route('handbookd.index')->with('success', 'Департамент успешно создан');
 
   }
 
@@ -81,6 +81,6 @@ class DepartmentController extends Controller
   {
     $department->delete();
 
-    return redirect()->route('handbookd.index')->with('success', 'Бөлім сәтті жойылды');
+    return redirect()->route('handbookd.index')->with('success', 'Департамент успешно удален');
   }
 }

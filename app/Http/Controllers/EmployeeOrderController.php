@@ -13,15 +13,27 @@ use Illuminate\Http\Request;
 class EmployeeOrderController extends Controller
 {
 
-    public function index()
-    {
-      $orders = EmployeeOrder::with('employee', 'orderType', 'currentStatus')->orderBy('created_at','desc')->paginate(10);
+  public function index(Request $request)
+  {
+    $query = EmployeeOrder::with('employee', 'orderType', 'currentStatus')
+      ->orderBy('created_at', 'desc');
 
-      return view('orders.index', ['orders' => $orders]);
+    if ($request->has('search') && !empty($request->search)) {
+      $search = $request->input('search');
+      $query->whereHas('employee', function($q) use ($search) {
+        $q->where('first_name', 'like', "%{$search}%")
+          ->orWhere('last_name', 'like', "%{$search}%");
+      });
     }
 
+    $orders = $query->paginate(10);
 
-    public function create()
+    return view('orders.index', ['orders' => $orders]);
+  }
+
+
+
+  public function create()
     {
         $employees = Employee::get();
         $orderTypes = OrderType::get();
@@ -44,7 +56,7 @@ class EmployeeOrderController extends Controller
 
     EmployeeOrder::insert($dataToInsert);
 
-    return redirect()->route('orders.index')->with('success', 'Кызмет тапсырыс сәтті жасалған');
+    return redirect()->route('orders.index')->with('success', 'Служебный заказ успешно создан');
 
   }
 
@@ -73,7 +85,7 @@ class EmployeeOrderController extends Controller
 
     $order->update($validatedData);
 
-    return redirect()->route('orders.index')->with('success', 'Қызметкер сәтті жаңартылды
+    return redirect()->route('orders.index')->with('success', 'Сотрудник успешно обновлён
 ');
 
   }
@@ -82,7 +94,7 @@ class EmployeeOrderController extends Controller
   {
     $order->delete();
 
-    return redirect()->route('orders.index')->with('success', 'Тапсырыс сәтті жойылды');
+    return redirect()->route('orders.index')->with('success', 'Приказ успешно удалён');
   }
 
 }

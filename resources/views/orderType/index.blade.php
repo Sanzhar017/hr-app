@@ -5,7 +5,7 @@
 @section('content')
   <h4>Типы приказов</h4>
 
-  <a href="{{ route('handbooko.create') }}" class="btn btn-primary mb-3">Создать новый тип заказа</a>
+  <a href="{{ route('handbooko.create') }}" class="btn btn-primary mb-3">Создать новый тип приказа</a>
 
   @if ($orderTypes->count() > 0)
     <div class="table-responsive">
@@ -38,6 +38,6 @@
       </table>
     </div>
   @else
-    <p>Типы заказов не найдены.</p>
+    <p>Типы приказов не найдены.</p>
   @endif
 @endsection

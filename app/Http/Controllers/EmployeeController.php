@@ -85,7 +85,7 @@ class EmployeeController extends Controller
 
     $employee = Employee::create($validatedData);
 
-    return redirect()->route('employees.index')->with('success', 'Қызметкер сәтті құрылды');
+    return redirect()->route('employees.index')->with('success', 'Сотрудник успешно создан');
   }
 
   public function show(Employee $employee)
@@ -118,13 +118,13 @@ class EmployeeController extends Controller
 
     $employee->update($validatedData);
 
-    return redirect()->route('employees.index')->with('success', 'Қызметкер сәтті жаңартылды');
+    return redirect()->route('employees.index')->with('success', 'Сотрудник успешно удален');
   }
 
   public function destroy(Employee $employee)
   {
     $employee->delete();
-    return redirect()->route('employees.index')->with('success', 'Қызметкер сәтті жойылды');
+    return redirect()->route('employees.index')->with('success', 'Сотрудник успешно удален');
   }
 
 

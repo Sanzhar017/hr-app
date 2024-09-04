@@ -10,10 +10,10 @@
     @method('PUT')
 
     <div class="mb-3">
-        <label for="name" class="form-label">нАЗВАНИЕ:</label>
+        <label for="name" class="form-label">Название:</label>
       <input type="text" class="form-control" id="name" name="name" value="{{ $status->name }}" required>
     </div>
 
-    <button type="submit" class="btn btn-primary">Статусты Өзгерту</button>
+    <button type="submit" class="btn btn-primary">Изменить статус</button>
   </form>
 @endsection

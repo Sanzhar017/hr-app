@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card">
-          <div class="card-header">{{ __('Бөлімді өңдеу') }}</div>
+          <div class="card-header">{{ __('Редактирование департамента') }}</div>
 
           <div class="card-body">
             <form method="POST" action="{{ route('handbookd.update', $department->id) }}">
@@ -16,7 +16,7 @@
               @method('PUT')
 
               <div class="form-group">
-                <label for="name">{{ __('Атауы') }}</label>
+                <label for="name">{{ __('Название') }}</label>
                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $department->name }}" required autocomplete="name" autofocus>
                 @error('name')
                 <span class="invalid-feedback" role="alert">
@@ -25,7 +25,7 @@
                 @enderror
               </div>
 
-              <button type="submit" class="btn btn-primary">{{ __('Бөлімді өңдеу') }}</button>
+              <button type="submit" class="btn btn-primary">{{ __('Редактирование департамента') }}</button>
             </form>
           </div>
         </div>

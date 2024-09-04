@@ -27,7 +27,7 @@
               <form action="{{ route('statuses.destroy', ['status' => $status->id]) }}" method="POST" style="display: inline-block;">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Растамаңыз келгенде бұл статусты өшіргіңіз келеді ме?')">Удалить</button>
+                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Подтвердите: вы уверены, что хотите удалить этот статус?')">Удалить</button>
               </form>
             </td>
           </tr>

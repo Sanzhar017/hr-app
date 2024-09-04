@@ -31,7 +31,7 @@ class AuthController extends Controller
 
     Auth::attempt($request->only('email', 'password'));
 
-    return redirect()->route('pages-home')->with('success', 'Тіркеу сәтті аяқталды.');
+    return redirect()->route('pages-home')->with('success', 'Регистрация успешно завершена');
   }
 
   public function showLoginForm()
@@ -62,6 +62,6 @@ class AuthController extends Controller
 
     // Перенаправление на страницу входа с сообщением о выходе
     return redirect()->route('login')->with('success', '
-Сіз жүйеден сәтті шықтыңыз.');
+Вы успешно вышли из системы.');
   }
 }

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
-    Тіркеу</title>
+    Зарегистрироваться</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
     body {
@@ -29,7 +29,7 @@
     <div class="col-md-8">
       <div class="card">
         <div class="card-header">{{ __('
-Тіркеу') }}</div>
+Зарегистрироваться') }}</div>
 
         <div class="card-body">
           <form method="POST" action="{{ route('register') }}">
@@ -65,7 +65,7 @@
 
             <div class="form-group row">
               <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('
-Құпия сөз') }}</label>
+Пароль') }}</label>
 
               <div class="col-md-6">
                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -79,7 +79,7 @@
             </div>
 
             <div class="form-group row">
-              <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Құпия сөзді растаңыз') }}</label>
+              <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Повторите пароль') }}</label>
 
               <div class="col-md-6">
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
@@ -91,10 +91,10 @@
 
                 <button type="submit" class="btn btn-success">
                   {{ __('
-Тіркелу') }}
+Сохранить') }}
                 </button>
                 <a class="btn btn-link" href="{{ route('login') }}">
-                  {{ __("Сізде аккаунт бар ма?") }}
+                  {{ __("Есть аккаунт?") }}
                 </a>
               </div>
               </div>

@@ -31,7 +31,7 @@ class OrderTypeController extends Controller
     OrderType::create($request->all());
 
     return redirect()->route('handbooko.index')
-      ->with('success', 'Order type created successfully.');
+      ->with('success', 'Приказ успешно создан');
   }
 
   public function show(OrderType $orderType)
@@ -63,6 +63,6 @@ class OrderTypeController extends Controller
     $orderType->delete();
 
     return redirect()->route('handbooko.index')
-      ->with('success', 'Тапсырыс түрі сәтті жойылды');
+      ->with('success', 'Приказ успешно удален');
   }
 }

@@ -4,6 +4,13 @@
 @section('title', 'Заказы сотрудников')
 
 @section('content')
+  <form method="GET" action="{{ route('orders.index') }}" class="mb-3">
+    <div class="input-group">
+      <input type="text" name="search" class="form-control" placeholder="Поиск по имени" value="{{ request()->input('search') }}">
+      <button class="btn btn-primary" type="submit">Поиск</button>
+    </div>
+  </form>
+
   {{ $orders->links() }}
 
   @if(session('success'))
@@ -12,7 +19,7 @@
     </div>
   @endif
 
-  <h4>Заказы сотрудников</h4>
+  <h4>Приказы сотрудников</h4>
 
   <a href="{{ route('orders.create') }}" class="btn btn-primary mb-3">Создать заказ</a>
 
@@ -22,10 +29,10 @@
       <th>ID</th>
       <th>Имя</th>
       <th>Фамилия</th>
-      <th>Тип заказа</th>
+      <th>Тип приказа</th>
       <th>Номер заказа</th>
       <th>Дата заказа</th>
-      <th>Тема</th>
+      <th>Название</th>
       <th>Старый статус</th>
       <th>Текущий статус</th>
       <th>Действия</th>

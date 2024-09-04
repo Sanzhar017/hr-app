@@ -42,7 +42,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="title" class="form-label">Тема:</label>
+      <label for="title" class="form-label">Название:</label>
       <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" required>
     </div>
 
